@@ -13,21 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UchPr_Glushkov_523.Pages
+namespace UchPr_Glushkov_523
 {
     /// <summary>
-    /// Логика взаимодействия для AuthPage.xaml
+    /// Логика взаимодействия для RegPage.xaml
     /// </summary>
-    public partial class AuthPage : Page
+    public partial class RegPage : Page
     {
-        public AuthPage()
+        public RegPage()
         {
             InitializeComponent();
         }
 
-        private void RegLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Pages.RegPage());
+            if (NavigationService.CanGoBack)
+            { 
+                NavigationService.GoBack();
+            }
         }
     }
 }

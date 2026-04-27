@@ -52,5 +52,10 @@ namespace UchPr_Glushkov_523.Pages
         {
             MainePage.NavigationService.Navigate(new Pages.UserPage());
         }
+
+        private void ButtWarn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Внимание, ваш аккаунт заморожен!");
+        }
     }
 }

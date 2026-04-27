@@ -33,6 +33,9 @@
                     <Button x:Name="ButtUser" Height="100" Margin="10" Click="ButtUser_Click"  Background="Transparent">
                         <Image Source="/Images/user.png"/>
                     </Button>
+                    <Button x:Name="ButtWarn" Height="100" Margin="10" Click="ButtWarn_Click"  Background="Transparent">
+                        <Image Source="/Images/warning.png"/>
+                    </Button>
                 </StackPanel>
             </Grid> 
         </ScrollViewer>

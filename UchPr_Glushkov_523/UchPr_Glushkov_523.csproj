@@ -35,8 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\ConsoleApp2\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\ConsoleApp2\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -75,6 +83,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RegPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,6 +94,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Book.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookGenre.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Complaint.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Core.cs" />
+    <Compile Include="Genre.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdministrationPage.xaml.cs">
       <DependentUpon>AdministrationPage.xaml</DependentUpon>
@@ -97,6 +122,45 @@
     </Compile>
     <Compile Include="Pages\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReadingList.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegPage.xaml.cs">
+      <DependentUpon>RegPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Review.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleApplication.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UchPrModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UchPrModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UchPrModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UchPrModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UchPrModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="UnfreezeRequest.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -135,9 +199,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="UchPrModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UchPrModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UchPrModel.edmx.diagram">
+      <DependentUpon>UchPrModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +229,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UchPrModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UchPrModel.Context.cs</LastGenOutput>
+      <DependentUpon>UchPrModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="UchPrModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UchPrModel.edmx</DependentUpon>
+      <LastGenOutput>UchPrModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
