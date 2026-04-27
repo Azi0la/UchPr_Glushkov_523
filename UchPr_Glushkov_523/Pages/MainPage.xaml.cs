@@ -23,6 +23,34 @@ namespace UchPr_Glushkov_523.Pages
         public MainPage()
         {
             InitializeComponent();
+            MainePage.NavigationService.Navigate(new Pages.CatalogPage());
+        }
+
+        private void ButtCatalog_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainePage.NavigationService.Navigate(new Pages.CatalogPage());
+
+        }
+
+        private void ButtBookList_Click(object sender, RoutedEventArgs e)
+        {
+            MainePage.NavigationService.Navigate(new Pages.BookListPage());
+        }
+
+        private void ButtAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            MainePage.NavigationService.Navigate(new Pages.AdministrationPage());
+        }
+
+        private void ButtAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            MainePage.NavigationService.Navigate(new Pages.AuthorPage());
+        }
+
+        private void ButtUser_Click(object sender, RoutedEventArgs e)
+        {
+            MainePage.NavigationService.Navigate(new Pages.UserPage());
         }
     }
 }
