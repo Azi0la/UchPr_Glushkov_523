@@ -13,18 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UchPr_Glushkov_523
+namespace UchPr_Glushkov_523.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AuthPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthPage : Page
     {
-        public MainWindow()
+        public AuthPage()
         {
             InitializeComponent();
-            MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            MainFrame.NavigationService.Navigate(new Pages.AuthPage());
+        }
+
+        private void Move_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.MainPage());
         }
     }
 }
