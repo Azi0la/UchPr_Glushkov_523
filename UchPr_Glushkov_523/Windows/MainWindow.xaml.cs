@@ -20,11 +20,13 @@ namespace UchPr_Glushkov_523
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static User user;
         public MainWindow()
         {
             InitializeComponent();
             MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             MainFrame.NavigationService.Navigate(new Pages.AuthPage());
+
         }
     }
 }

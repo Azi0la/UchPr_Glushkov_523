@@ -10,7 +10,27 @@
       Background="Salmon">
 
     <Grid>
-
-        <Button x:Name="BackBtn" Width="100" Height="50" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Content="Назад" FontSize="20" Click="BackBtn_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2.7*"/>
+            <ColumnDefinition Width="2.7*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Регистрация" FontSize="35" Grid.ColumnSpan="2" Margin="15"/>
+        <Button x:Name="BackBtn" Grid.Column="0" Width="100" Height="50" HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" Margin="10" Content="Назад" FontSize="20" Click="BackBtn_Click"/>
+        <StackPanel Grid.Column="1">
+            <Label Content="Логин:" Margin="15,100,0,0" FontSize="25"/>
+            <TextBox x:Name="LoginTB" Height="40" Width="300" TextChanged="NameTB_TextChanged"/>
+            <Label Content="Пароль:" Margin="15,40,0,0" FontSize="25"/>
+            <TextBox x:Name="PassTB" Height="40" Width="300" TextChanged="NameTB_TextChanged"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label Content="Почта:" Margin="15,100,0,0" FontSize="25"/>
+            <TextBox x:Name="EmailTB" Height="40" Width="300" TextChanged="NameTB_TextChanged"/>
+            <Label Content="Имя:" Margin="15,40,0,0" FontSize="25"/>
+            <TextBox x:Name="NameTB" Height="40" Width="300" TextChanged="NameTB_TextChanged"/>
+        </StackPanel>
+        <Button x:Name="RegBtn" Grid.Column="2" Width="100" Height="50" HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" Margin="10" Content="Регистрация" FontSize="15" IsEnabled="False" Click="RegBtn_Click"/>
     </Grid>
 </Page>

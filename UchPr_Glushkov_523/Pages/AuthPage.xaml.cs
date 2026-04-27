@@ -20,6 +20,7 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class AuthPage : Page
     {
+        public static List<User> users = Core.Context.User.ToList();
         public AuthPage()
         {
             InitializeComponent();
@@ -27,7 +28,33 @@ namespace UchPr_Glushkov_523.Pages
 
         private void RegLabel_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new Pages.RegPage());
+            NavigationService.Navigate(new RegPage());
+        }
+
+        private void PassTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(PassTB.Text) && !string.IsNullOrEmpty(LoginTB.Text))
+            {
+                AuthBtn.IsEnabled = true;
+            }
+            else
+            {
+                AuthBtn.IsEnabled = false;
+            }
+        }
+
+        private void AuthBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (users.FirstOrDefault(p => p.Login == LoginTB.Text && p.Password == PassTB.Text) != null)
+            {
+                MainWindow.user = users.FirstOrDefault(p => p.Login == LoginTB.Text && p.Password == PassTB.Text);
+                MessageBox.Show("Вход прошёл успешно!");
+                NavigationService.Navigate(new MainPage());
+            }
+            else
+            {
+                MessageBox.Show("Неправильный логин или пароль!");
+            }
         }
     }
 }

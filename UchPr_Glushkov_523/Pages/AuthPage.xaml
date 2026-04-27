@@ -11,12 +11,12 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center">
-            <Label Content="Шут и Кроль" Margin="0,30,0,0" FontSize="30"/>
+            <Label Content="Шут и Кроль" Margin="0,30,0,0" FontSize="35"/>
             <Label Content="Логин:" Margin="0,25,0,5" FontSize="20"/>
-            <TextBox x:Name="LoginTB" Height="35"/>
+            <TextBox x:Name="LoginTB" Height="35" TextChanged="PassTB_TextChanged"/>
             <Label Content="Пароль:" Margin="0,10,0,5" FontSize="20"/>
-            <TextBox x:Name="PassTB" Height="35"/>
-            <Button Height="40" Width="150" Margin="0, 20" Content="Войти" FontSize="25"/>
+            <TextBox x:Name="PassTB" Height="35" TextChanged="PassTB_TextChanged"/>
+            <Button x:Name="AuthBtn" Height="40" Width="150" Margin="0, 20" Content="Войти" FontSize="25" IsEnabled="False" Click="AuthBtn_Click"/>
             <Label Content="Нет аккаунта?" x:Name="RegLabel" HorizontalAlignment="Center" MouseDoubleClick="RegLabel_MouseDoubleClick">
                 <Label.Style>
                     <Style TargetType="Label">
