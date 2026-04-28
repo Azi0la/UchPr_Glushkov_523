@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище UchPr_GlushkovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище UchPr_GlushkovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="ID" />
@@ -16,6 +16,7 @@
           <Property Name="Filling" Type="nvarchar(max)" Nullable="false" />
           <Property Name="AuthorID" Type="int" Nullable="false" />
           <Property Name="IsFrozen" Type="bit" Nullable="false" />
+          <Property Name="Rating" Type="float" />
         </EntityType>
         <EntityType Name="BookGenre">
           <Key>
@@ -348,8 +349,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UchPr_GlushkovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -370,6 +370,7 @@
           <NavigationProperty Name="ReadingList" Relationship="Self.FK_ReadingList_Book" FromRole="Book" ToRole="ReadingList" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_Book" FromRole="Book" ToRole="Review" />
           <NavigationProperty Name="UnfreezeRequest" Relationship="Self.FK_UnfreezeRequest_Book" FromRole="Book" ToRole="UnfreezeRequest" />
+          <Property Name="Rating" Type="Double" />
         </EntityType>
         <EntityType Name="BookGenre">
           <Key>
@@ -733,6 +734,7 @@
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="UchPr_GlushkovModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

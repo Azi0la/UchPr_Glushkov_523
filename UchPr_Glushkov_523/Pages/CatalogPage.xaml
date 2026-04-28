@@ -10,6 +10,44 @@
       Background="Salmon">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3.5*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
+            <Label Content="Поиск: " VerticalAlignment="Center" FontSize="25"/>
+            <TextBox x:Name="SearchBar" Height="30" Width="400" TextChanged="SearchBar_TextChanged"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <Label Content="Сортировка:" HorizontalAlignment="Center" FontSize="15"/>
+            <ComboBox x:Name="FilterBox" Grid.Row="0" Grid.Column="0" Margin="15" SelectionChanged="FilterBox_SelectionChanged"/>
+        </StackPanel>
+
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="BookList"
+                 MouseDoubleClick="BookList_MouseDoubleClick" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Image Source="{Binding ImagePath}" Width="150" Height="200"/>
+                        <TextBlock Text="{Binding Title}"/>
+                        <TextBlock Text="{Binding User.Name}"/>
+                        <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </Grid>
 </Page>

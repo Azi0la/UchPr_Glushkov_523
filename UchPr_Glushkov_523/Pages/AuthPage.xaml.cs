@@ -48,7 +48,6 @@ namespace UchPr_Glushkov_523.Pages
             if (users.FirstOrDefault(p => p.Login == LoginTB.Text && p.Password == PassTB.Text) != null)
             {
                 MainWindow.user = users.FirstOrDefault(p => p.Login == LoginTB.Text && p.Password == PassTB.Text);
-                MessageBox.Show("Вход прошёл успешно!");
                 NavigationService.Navigate(new MainPage());
             }
             else
