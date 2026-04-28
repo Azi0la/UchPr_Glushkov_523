@@ -234,6 +234,9 @@
     <Resource Include="Images\warning.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\SilentDan.jpg" />
+    <Resource Include="Images\Festival.jpg" />
+    <Resource Include="Images\IHNMaIMS.jpg" />
     <Content Include="UchPrModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UchPrModel.Context.cs</LastGenOutput>
