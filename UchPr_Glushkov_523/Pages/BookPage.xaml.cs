@@ -28,7 +28,9 @@ namespace UchPr_Glushkov_523.Pages
             InitializeComponent();
             DataContext = _book;
             ReviewList.ItemsSource = r.Where(c => c.BookID == _book.ID).ToList();
+            List<String> sorting = new List<String> { "Нет", "Заброшено", "В планах", "Читаю", "Прочитано" };
             List <BookGenre> bookGenres = bg.Where(c => c.BookID == _book.ID).ToList();
+            StatusCB.ItemsSource = sorting;
             foreach(BookGenre b in bookGenres)
             {
                 GenreTB.Text += g.FirstOrDefault(c => c.ID == b.GenreID).Name.ToString();
