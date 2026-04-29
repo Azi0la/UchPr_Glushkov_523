@@ -25,7 +25,7 @@ namespace UchPr_Glushkov_523.Pages
         {
             InitializeComponent();
             BookList.ItemsSource = books;
-            List<String> sorting = new List<String> { "По Названию", "По Автору" };
+            List<String> sorting = new List<String> { "По Названию", "По Оценке" };
             FilterBox.ItemsSource = sorting;
         }
 
@@ -37,7 +37,7 @@ namespace UchPr_Glushkov_523.Pages
                     BookList.ItemsSource = books.OrderBy(p => p.Title);
                     break;
                 case 1:
-                    BookList.ItemsSource = books.OrderBy(p => p.AuthorID);
+                    BookList.ItemsSource = books.OrderBy(p => p.Review);
                     break;
                 default:
                     BookList.ItemsSource = books.OrderBy(p => p.Title);
