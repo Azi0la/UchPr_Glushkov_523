@@ -52,7 +52,7 @@ namespace UchPr_Glushkov_523.Pages
 
         private void BookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //MainWindow.MainFrame.NavigationService.Navigate(new BookPage(BookList.SelectedItem as Book));
+            NavigationService.Navigate(new BookPage(BookList.SelectedItem as Book));
         }
     }
 }

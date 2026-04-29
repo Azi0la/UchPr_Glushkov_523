@@ -20,10 +20,20 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class BookPage : Page
     {
+        public static List <BookGenre> bg = Core.Context.BookGenre.ToList();
+        public static List <Genre> g = Core.Context.Genre.ToList();
+        public static List <Review> r = Core.Context.Review.ToList();
         public BookPage(Book _book)
         {
             InitializeComponent();
             DataContext = _book;
+            ReviewList.ItemsSource = r.Where(c => c.BookID == _book.ID).ToList();
+            List <BookGenre> bookGenres = bg.Where(c => c.BookID == _book.ID).ToList();
+            foreach(BookGenre b in bookGenres)
+            {
+                GenreTB.Text += g.FirstOrDefault(c => c.ID == b.GenreID).Name.ToString();
+                GenreTB.Text += " ";
+            }
         }
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)

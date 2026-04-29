@@ -22,6 +22,41 @@
             <Button x:Name="ReviewBTN" Width="150" Height="50" Content="Написать отзыв" FontSize="16" Margin="0,15,0,0"/>
             <Button x:Name="BackBTN" Width="150" Height="50" Content="Назад" FontSize="25" Margin="0,15,0,0" Click="BackBTN_Click" VerticalAlignment="Bottom"/>
         </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <TextBlock Text="{Binding Title}" FontSize="20"/>
+            <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}" FontSize="20"/>
+            <TextBlock Text="{Binding Description, StringFormat=Описание: {0}}" FontSize="15" TextWrapping="Wrap"/>
+            <TextBlock Text="Жанры: " x:Name="GenreTB" FontSize="15" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}" FontSize="15"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10">
+            <Button x:Name="BookComplBTN" Width="150" Height="50" Content="Жалоба на книгу" FontSize="16"/>
+            <Button x:Name="AuthComplBTN" Width="150" Height="50" Content="Жалоба на автора" FontSize="16" Margin="0,10,0,0"/>
+        </StackPanel>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
 
+            <Label Content="Отзывы" HorizontalAlignment="Center" FontSize="20" Grid.Row="0"></Label>
+            <ListBox x:Name="ReviewList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding User.Name}"/>
+                        <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}"/>
+                        <TextBlock Text="{Binding Text}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        </Grid>
     </Grid>
 </Page>
