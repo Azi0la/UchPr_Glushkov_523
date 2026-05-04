@@ -12,7 +12,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3.5*"/>
+            <ColumnDefinition Width="4*"/>
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
