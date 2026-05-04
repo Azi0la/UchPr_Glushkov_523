@@ -31,6 +31,9 @@ namespace UchPr_Glushkov_523.Pages
             List<String> sorting = new List<String> { "Нет", "Заброшено", "В планах", "Читаю", "Прочитано" };
             List <BookGenre> bookGenres = bg.Where(c => c.BookID == _book.ID).ToList();
             StatusCB.ItemsSource = sorting;
+            
+            
+
             foreach(BookGenre b in bookGenres)
             {
                 GenreTB.Text += g.FirstOrDefault(c => c.ID == b.GenreID).Name.ToString();
@@ -43,6 +46,26 @@ namespace UchPr_Glushkov_523.Pages
             if (NavigationService.CanGoBack)
             {
                 NavigationService.GoBack();
+            }
+        }
+
+        private void StatusCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (StatusCB.SelectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    
+                    break;
             }
         }
     }

@@ -37,7 +37,7 @@ namespace UchPr_Glushkov_523.Pages
                     BookList.ItemsSource = books.OrderBy(p => p.Title);
                     break;
                 case 1:
-                    BookList.ItemsSource = books.OrderBy(p => p.Review);
+                    BookList.ItemsSource = books.OrderBy(p => p.Rating);
                     break;
                 default:
                     BookList.ItemsSource = books.OrderBy(p => p.Title);
@@ -47,7 +47,7 @@ namespace UchPr_Glushkov_523.Pages
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            BookList.ItemsSource = books.Where(p => p.Title.ToLower().Contains(SearchBar.Text.ToLower()));
+            BookList.ItemsSource = books.Where(p => p.Title.ToLower().Contains(SearchBar.Text.ToLower()) || p.User.Name.ToLower().Contains(SearchBar.Text.ToLower()));
         }
 
         private void BookList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
