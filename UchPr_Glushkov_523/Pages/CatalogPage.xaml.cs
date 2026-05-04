@@ -21,13 +21,14 @@ namespace UchPr_Glushkov_523.Pages
     public partial class CatalogPage : Page
     {
         public static List<Book> books = Core.Context.Book.ToList();
+        public static List<Genre> Genres = Core.Context.Genre.ToList();
         public CatalogPage()
         {
             InitializeComponent();
             BookList.ItemsSource = books;
             List<String> sorting = new List<String> { "По Названию", "По Оценке" };
             FilterBox.ItemsSource = sorting;
-            
+            GenreList.ItemsSource = Genres;
             
         }
 
@@ -56,5 +57,19 @@ namespace UchPr_Glushkov_523.Pages
         {
             NavigationService.Navigate(new BookPage(BookList.SelectedItem as Book));
         }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton)
+            {
+                RadioButton rb = sender as RadioButton; 
+                int f=0;
+                if (int.TryParse(rb.Tag.ToString(), out int taga))
+                    f = taga;
+                
+                List<BookGenre> g = Core.Context.BookGenre.Where(bg => bg.GenreID == (f)).ToList();
+                BookList.ItemsSource = g.Select(genr=>genr.Book);
+            }
+        } 
     }
 }
