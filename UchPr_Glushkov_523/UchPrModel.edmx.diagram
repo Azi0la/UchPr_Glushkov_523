@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="91a27af85b044157ad0fe59a9e85cdd4" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="91a27af85b044157ad0fe59a9e85cdd4" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="UchPr_GlushkovModel.Book" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.BookGenre" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.Complaint" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
