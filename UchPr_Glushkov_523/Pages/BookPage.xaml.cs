@@ -23,9 +23,11 @@ namespace UchPr_Glushkov_523.Pages
         public static List <BookGenre> bg = Core.Context.BookGenre.ToList();
         public static List <Genre> g = Core.Context.Genre.ToList();
         public static List <Review> r = Core.Context.Review.ToList();
+        Book book;
         public BookPage(Book _book)
         {
             InitializeComponent();
+            book = _book;
             DataContext = _book;
             ReviewList.ItemsSource = r.Where(c => c.BookID == _book.ID).ToList();
             List<String> sorting = new List<String> { "Заброшено", "В планах", "Читаю", "Прочитано" };
@@ -68,6 +70,11 @@ namespace UchPr_Glushkov_523.Pages
                     
                     break;
             }
+        }
+
+        private void ReadBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ReadPage(book));
         }
     }
 }
