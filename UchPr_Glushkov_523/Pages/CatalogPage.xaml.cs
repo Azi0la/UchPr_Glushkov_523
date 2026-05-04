@@ -27,6 +27,8 @@ namespace UchPr_Glushkov_523.Pages
             BookList.ItemsSource = books;
             List<String> sorting = new List<String> { "По Названию", "По Оценке" };
             FilterBox.ItemsSource = sorting;
+            
+            
         }
 
         private void FilterBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

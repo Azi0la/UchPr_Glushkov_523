@@ -31,7 +31,8 @@ namespace UchPr_Glushkov_523.Pages
             List<String> sorting = new List<String> { "Нет", "Заброшено", "В планах", "Читаю", "Прочитано" };
             List <BookGenre> bookGenres = bg.Where(c => c.BookID == _book.ID).ToList();
             StatusCB.ItemsSource = sorting;
-            
+            int count = _book.Review.Count;
+            CountTB.Text = "Кол-во отзывов: " + count;
             
 
             foreach(BookGenre b in bookGenres)

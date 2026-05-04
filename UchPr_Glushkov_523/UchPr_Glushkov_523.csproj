@@ -139,6 +139,7 @@
     <Compile Include="Review.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReviewCount.cs" />
     <Compile Include="Role.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
