@@ -30,6 +30,27 @@ namespace UchPr_Glushkov_523.Pages
             InitializeComponent();
             book = _book;
             DataContext = _book;
+
+            ReviewList.ItemsSource = r.Where(c => c.BookID == book.ID).ToList();
+            List<String> sorting = new List<String> { "Заброшено", "В планах", "Читаю", "Прочитано" };
+            List<BookGenre> bookGenres = bg.Where(c => c.BookID == book.ID).ToList();
+            StatusCB.ItemsSource = sorting;
+            int count = book.Review.Count;
+            CountTB.Text = "Кол-во отзывов: " + count;
+
+            var z = rl.FirstOrDefault(c => c.UserID == MainWindow.user.ID && c.BookID == book.ID);
+            if (z != null)
+            {
+                StatusCB.SelectedIndex = z.StatusID - 1;
+            }
+
+            //var lbl = bookGenres.Select();
+
+            foreach (BookGenre b in bookGenres)
+            {
+                GenreTB.Text += g.FirstOrDefault(c => c.ID == b.GenreID).Name.ToString();
+                GenreTB.Text += " ";
+            }
         }
 
 
@@ -46,7 +67,7 @@ namespace UchPr_Glushkov_523.Pages
         {
             switch (StatusCB.SelectedIndex)
             {
-                case 1:
+                case 0:
                     var z = rl.FirstOrDefault(c => c.UserID == MainWindow.user.ID && c.BookID == book.ID);
                     if (z == null)
                     {
@@ -54,17 +75,17 @@ namespace UchPr_Glushkov_523.Pages
                         {
                             UserID = MainWindow.user.ID,
                             BookID = book.ID,
-                            Status = "Заброшено"
+                            StatusID = 1
                         };
                         Core.Context.ReadingList.Add(n);
                     }
-                    else if (z.Status != "Заброшено")
+                    else if (z.StatusID != 1)
                     {
-                        z.Status = "Заброшено";
+                        z.StatusID = 1;
                     }
                     Core.Context.SaveChanges();
                     break;
-                case 2:
+                case 1:
                     var v = rl.FirstOrDefault(c => c.UserID == MainWindow.user.ID && c.BookID == book.ID);
                     if (v == null)
                     {
@@ -72,18 +93,18 @@ namespace UchPr_Glushkov_523.Pages
                         {
                             UserID = MainWindow.user.ID,
                             BookID = book.ID,
-                            Status = "В планах"
+                            StatusID = 2
                         };
                         Core.Context.ReadingList.Add(n);
                     }
-                    else if (v.Status != "В планах")
+                    else if (v.StatusID != 2)
                     {
-                        v.Status = "В планах";
+                        v.StatusID = 2;
                         
                     }
                     Core.Context.SaveChanges();
                     break;
-                case 3:
+                case 2:
                     var ch = rl.FirstOrDefault(c => c.UserID == MainWindow.user.ID && c.BookID == book.ID);
                     if (ch == null)
                     {
@@ -91,18 +112,18 @@ namespace UchPr_Glushkov_523.Pages
                         {
                             UserID = MainWindow.user.ID,
                             BookID = book.ID,
-                            Status = "Читаю"
+                            StatusID = 3
                         };
                         Core.Context.ReadingList.Add(n);
                     }
-                    else if (ch.Status != "Читаю")
+                    else if (ch.StatusID != 3)
                     {
-                        ch.Status = "Читаю";
+                        ch.StatusID = 3;
 
                     }
                     Core.Context.SaveChanges();
                     break;
-                case 4:
+                case 3:
                     var p = rl.FirstOrDefault(c => c.UserID == MainWindow.user.ID && c.BookID == book.ID);
                     if (p == null)
                     {
@@ -110,13 +131,13 @@ namespace UchPr_Glushkov_523.Pages
                         {
                             UserID = MainWindow.user.ID,
                             BookID = book.ID,
-                            Status = "Прочитано"
+                            StatusID = 4
                         };
                         Core.Context.ReadingList.Add(n);
                     }
-                    else if (p.Status != "Прочитано")
+                    else if (p.StatusID != 4)
                     {
-                        p.Status = "Прочитано";
+                        p.StatusID = 4;
 
                     }
                     Core.Context.SaveChanges();
@@ -125,6 +146,7 @@ namespace UchPr_Glushkov_523.Pages
                     
                     break;
             }
+            rl = Core.Context.ReadingList.ToList();
         }
 
         private void ReadBTN_Click(object sender, RoutedEventArgs e)
@@ -135,26 +157,7 @@ namespace UchPr_Glushkov_523.Pages
         private void Loading()
         {
             
-            ReviewList.ItemsSource = r.Where(c => c.BookID == book.ID).ToList();
-            List<String> sorting = new List<String> { "Заброшено", "В планах", "Читаю", "Прочитано" };
-            List<BookGenre> bookGenres = bg.Where(c => c.BookID == book.ID).ToList();
-            StatusCB.ItemsSource = sorting;
-            int count = book.Review.Count;
-            CountTB.Text = "Кол-во отзывов: " + count;
 
-            var z = rl.FirstOrDefault(c => c.UserID == MainWindow.user.ID && c.BookID == book.ID);
-            if (z != null)
-            {
-                StatusCB.SelectedItem = z.Status;
-            }
-
-            //var lbl = bookGenres.Select();
-
-            foreach (BookGenre b in bookGenres)
-            {
-                GenreTB.Text += g.FirstOrDefault(c => c.ID == b.GenreID).Name.ToString();
-                GenreTB.Text += " ";
-            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

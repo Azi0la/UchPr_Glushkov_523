@@ -17,6 +17,10 @@ namespace UchPr_Glushkov_523
         public int ID { get; set; }
         public int UserID { get; set; }
         public int BookID { get; set; }
-        public string Status { get; set; }
+        public int StatusID { get; set; }
+    
+        public virtual Book Book { get; set; }
+        public virtual ReadingStatus ReadingStatus { get; set; }
+        public virtual User User { get; set; }
     }
 }

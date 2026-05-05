@@ -8,6 +8,6 @@ namespace UchPr_Glushkov_523
 {
     internal class Core
     {
-        public static UchPr_GlushkovEntities Context = new UchPr_GlushkovEntities();
+        public static UchPr_GlushkovEntities1 Context = new UchPr_GlushkovEntities1();
     }
 }

@@ -23,6 +23,7 @@ namespace UchPr_Glushkov_523
             this.Review = new HashSet<Review>();
             this.RoleApplication = new HashSet<RoleApplication>();
             this.UnfreezeRequest = new HashSet<UnfreezeRequest>();
+            this.ReadingList = new HashSet<ReadingList>();
         }
     
         public int ID { get; set; }
@@ -46,5 +47,7 @@ namespace UchPr_Glushkov_523
         public virtual ICollection<RoleApplication> RoleApplication { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UnfreezeRequest> UnfreezeRequest { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReadingList> ReadingList { get; set; }
     }
 }

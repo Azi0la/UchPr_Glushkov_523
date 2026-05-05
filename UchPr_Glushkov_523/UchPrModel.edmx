@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище UchPr_GlushkovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище UchPr_GlushkovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="ID" />
@@ -52,7 +52,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ReadingStatus">
           <Key>
@@ -191,6 +191,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ReadingList_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="ReadingList" Type="Self.ReadingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReadingList">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReadingList_ReadingStatus">
+          <End Role="ReadingStatus" Type="Self.ReadingStatus" Multiplicity="1" />
+          <End Role="ReadingList" Type="Self.ReadingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReadingStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReadingList">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReadingList_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ReadingList" Type="Self.ReadingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReadingList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Review_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
@@ -300,6 +336,18 @@
             <End Role="User" EntitySet="User" />
             <End Role="Complaint" EntitySet="Complaint" />
           </AssociationSet>
+          <AssociationSet Name="FK_ReadingList_Book" Association="Self.FK_ReadingList_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="ReadingList" EntitySet="ReadingList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReadingList_ReadingStatus" Association="Self.FK_ReadingList_ReadingStatus">
+            <End Role="ReadingStatus" EntitySet="ReadingStatus" />
+            <End Role="ReadingList" EntitySet="ReadingList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReadingList_User" Association="Self.FK_ReadingList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReadingList" EntitySet="ReadingList" />
+          </AssociationSet>
           <AssociationSet Name="FK_Review_Book" Association="Self.FK_Review_Book">
             <End Role="Book" EntitySet="Book" />
             <End Role="Review" EntitySet="Review" />
@@ -325,8 +373,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UchPr_GlushkovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -347,6 +394,7 @@
           <NavigationProperty Name="Complaint" Relationship="Self.FK_Complaint_Book" FromRole="Book" ToRole="Complaint" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_Book" FromRole="Book" ToRole="Review" />
           <NavigationProperty Name="UnfreezeRequest" Relationship="Self.FK_UnfreezeRequest_Book" FromRole="Book" ToRole="UnfreezeRequest" />
+          <NavigationProperty Name="ReadingList" Relationship="UchPr_GlushkovModel.FK_ReadingList_Book" FromRole="Book" ToRole="ReadingList" />
         </EntityType>
         <EntityType Name="BookGenre">
           <Key>
@@ -388,7 +436,10 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="UchPr_GlushkovModel.FK_ReadingList_Book" FromRole="ReadingList" ToRole="Book" />
+          <NavigationProperty Name="ReadingStatus" Relationship="UchPr_GlushkovModel.FK_ReadingList_ReadingStatus" FromRole="ReadingList" ToRole="ReadingStatus" />
+          <NavigationProperty Name="User" Relationship="UchPr_GlushkovModel.FK_ReadingList_User" FromRole="ReadingList" ToRole="User" />
         </EntityType>
         <EntityType Name="ReadingStatus">
           <Key>
@@ -396,6 +447,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ReadingList" Relationship="UchPr_GlushkovModel.FK_ReadingList_ReadingStatus" FromRole="ReadingStatus" ToRole="ReadingList" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -467,6 +519,7 @@
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="RoleApplication" Relationship="Self.FK_RoleApplication_User" FromRole="User" ToRole="RoleApplication" />
           <NavigationProperty Name="UnfreezeRequest" Relationship="Self.FK_UnfreezeRequest_User" FromRole="User" ToRole="UnfreezeRequest" />
+          <NavigationProperty Name="ReadingList" Relationship="UchPr_GlushkovModel.FK_ReadingList_User" FromRole="User" ToRole="ReadingList" />
         </EntityType>
         <Association Name="FK_Book_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -673,7 +726,55 @@
             <End Role="User" EntitySet="User" />
             <End Role="UnfreezeRequest" EntitySet="UnfreezeRequest" />
           </AssociationSet>
+          <AssociationSet Name="FK_ReadingList_Book" Association="UchPr_GlushkovModel.FK_ReadingList_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="ReadingList" EntitySet="ReadingList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReadingList_ReadingStatus" Association="UchPr_GlushkovModel.FK_ReadingList_ReadingStatus">
+            <End Role="ReadingStatus" EntitySet="ReadingStatus" />
+            <End Role="ReadingList" EntitySet="ReadingList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReadingList_User" Association="UchPr_GlushkovModel.FK_ReadingList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReadingList" EntitySet="ReadingList" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_ReadingList_Book">
+          <End Type="UchPr_GlushkovModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="UchPr_GlushkovModel.ReadingList" Role="ReadingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReadingList">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReadingList_ReadingStatus">
+          <End Type="UchPr_GlushkovModel.ReadingStatus" Role="ReadingStatus" Multiplicity="1" />
+          <End Type="UchPr_GlushkovModel.ReadingList" Role="ReadingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReadingStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReadingList">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReadingList_User">
+          <End Type="UchPr_GlushkovModel.User" Role="User" Multiplicity="1" />
+          <End Type="UchPr_GlushkovModel.ReadingList" Role="ReadingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReadingList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -727,10 +828,10 @@
           <EntitySetMapping Name="ReadingList">
             <EntityTypeMapping TypeName="UchPr_GlushkovModel.ReadingList">
               <MappingFragment StoreEntitySet="ReadingList">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

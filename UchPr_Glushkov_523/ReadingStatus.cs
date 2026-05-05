@@ -14,7 +14,16 @@ namespace UchPr_Glushkov_523
     
     public partial class ReadingStatus
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ReadingStatus()
+        {
+            this.ReadingList = new HashSet<ReadingList>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReadingList> ReadingList { get; set; }
     }
 }
