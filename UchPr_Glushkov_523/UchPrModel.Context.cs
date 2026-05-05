@@ -13,10 +13,10 @@ namespace UchPr_Glushkov_523
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UchPr_GlushkovEntities : DbContext
+    public partial class UchPr_GlushkovEntities1 : DbContext
     {
-        public UchPr_GlushkovEntities()
-            : base("name=UchPr_GlushkovEntities")
+        public UchPr_GlushkovEntities1()
+            : base("name=UchPr_GlushkovEntities1")
         {
         }
     
@@ -30,6 +30,7 @@ namespace UchPr_Glushkov_523
         public virtual DbSet<Complaint> Complaint { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<ReadingList> ReadingList { get; set; }
+        public virtual DbSet<ReadingStatus> ReadingStatus { get; set; }
         public virtual DbSet<Review> Review { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<RoleApplication> RoleApplication { get; set; }

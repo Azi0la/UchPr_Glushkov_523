@@ -137,11 +137,14 @@
     <Compile Include="Pages\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RegPage.xaml.cs">
+      <DependentUpon>RegPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReadingList.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RegPage.xaml.cs">
-      <DependentUpon>RegPage.xaml</DependentUpon>
+    <Compile Include="ReadingStatus.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Review.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
@@ -253,19 +256,21 @@
     <Resource Include="Images\Festival.jpg" />
     <Resource Include="Images\IHNMaIMS.jpg" />
     <Resource Include="Images\Picnick.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="UchPrModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UchPrModel.Context.cs</LastGenOutput>
       <DependentUpon>UchPrModel.edmx</DependentUpon>
+      <LastGenOutput>UchPrModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="UchPrModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UchPrModel.edmx</DependentUpon>
       <LastGenOutput>UchPrModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

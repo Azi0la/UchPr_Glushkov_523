@@ -12,11 +12,9 @@ namespace UchPr_Glushkov_523
     using System;
     using System.Collections.Generic;
     
-    public partial class ReadingList
+    public partial class ReadingStatus
     {
         public int ID { get; set; }
-        public int UserID { get; set; }
-        public int BookID { get; set; }
-        public string Status { get; set; }
+        public string Name { get; set; }
     }
 }

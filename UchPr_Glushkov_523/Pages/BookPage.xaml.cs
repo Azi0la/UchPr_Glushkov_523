@@ -145,7 +145,7 @@ namespace UchPr_Glushkov_523.Pages
             var z = rl.FirstOrDefault(c => c.UserID == MainWindow.user.ID && c.BookID == book.ID);
             if (z != null)
             {
-                StatusCB.SelectedIndex = z.ID;
+                StatusCB.SelectedItem = z.Status;
             }
 
             //var lbl = bookGenres.Select();
