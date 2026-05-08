@@ -61,7 +61,7 @@
         <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="GenreList">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <RadioButton Content="{Binding Name}" Tag="{Binding ID}" GroupName="tt" Click="RadioButton_Click"/>
+                    <CheckBox Content="{Binding Name}" Tag="{Binding ID}" Click="RadioButton_Click"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

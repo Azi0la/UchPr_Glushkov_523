@@ -62,10 +62,10 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="GenreList">
+        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="GenreList" Height="375" VerticalAlignment="Top">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <RadioButton Content="{Binding Name}" Tag="{Binding ID}" GroupName="tt" Click="RadioButton_Click"/>
+                    <CheckBox Content="{Binding Name}" Tag="{Binding ID}" Click="CheckBox_Click" x:Name="GenreBox"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

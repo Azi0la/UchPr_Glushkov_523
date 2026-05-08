@@ -20,9 +20,9 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class BookPage : Page
     {
-        public static List <BookGenre> bg = Core.Context.BookGenre.ToList();
-        public static List <Genre> g = Core.Context.Genre.ToList();
-        public static List <Review> r = Core.Context.Review.ToList();
+        public static List<BookGenre> bg = Core.Context.BookGenre.ToList();
+        public static List<Genre> g = Core.Context.Genre.ToList();
+        public static List<Review> r = Core.Context.Review.ToList();
         public static List<ReadingList> rl = Core.Context.ReadingList.ToList();
         Book book;
         public BookPage(Book _book)
@@ -100,7 +100,7 @@ namespace UchPr_Glushkov_523.Pages
                     else if (v.StatusID != 2)
                     {
                         v.StatusID = 2;
-                        
+
                     }
                     Core.Context.SaveChanges();
                     break;
@@ -143,7 +143,7 @@ namespace UchPr_Glushkov_523.Pages
                     Core.Context.SaveChanges();
                     break;
                 default:
-                    
+
                     break;
             }
             rl = Core.Context.ReadingList.ToList();
@@ -156,7 +156,7 @@ namespace UchPr_Glushkov_523.Pages
 
         private void Loading()
         {
-            
+
 
         }
 
@@ -164,3 +164,4 @@ namespace UchPr_Glushkov_523.Pages
 => Loading();
     }
 }
+
