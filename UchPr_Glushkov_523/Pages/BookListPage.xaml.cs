@@ -107,7 +107,10 @@ namespace UchPr_Glushkov_523.Pages
                     break;
             }
 
-           
+            var b = new List<Genre>();
+            foreach (var i in GenreList.Items){
+                if(i )
+            }
             Genre SelGen = GenreList.SelectedItem as Genre;
             if(SelGen != null)
             {
