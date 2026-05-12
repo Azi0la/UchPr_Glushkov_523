@@ -19,7 +19,7 @@
         <StackPanel>
             <Image Source="{Binding ImagePath}" Width="150" Height="200" Margin="0,10,0,0"/>
             <Button x:Name="ReadBTN" Width="150" Height="50" Content="Читать" FontSize="25" Margin="0,15,0,0" Click="ReadBTN_Click"/>
-            <Button x:Name="ReviewBTN" Width="150" Height="50" Content="Написать отзыв" FontSize="16" Margin="0,15,0,0"/>
+            <Button x:Name="ReviewBTN" Width="150" Height="50" Content="Написать отзыв" FontSize="16" Margin="0,15,0,0" Click="ReviewBTN_Click"/>
             <Button x:Name="BackBTN" Width="150" Height="50" Content="Назад" FontSize="25" Margin="0,15,0,0" Click="BackBTN_Click" VerticalAlignment="Bottom"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Vertical">

@@ -162,6 +162,11 @@ namespace UchPr_Glushkov_523.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
 => Loading();
+
+        private void ReviewBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ReviewPage(book));
+        }
     }
 }
 

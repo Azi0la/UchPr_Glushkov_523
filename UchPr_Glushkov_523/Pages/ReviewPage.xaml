@@ -1,0 +1,35 @@
+﻿<Page x:Class="UchPr_Glushkov_523.Pages.ReviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UchPr_Glushkov_523.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ReviewPage"
+      Background="Salmon">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="BackBTN" Width="100" Height="50" VerticalAlignment="Bottom" 
+                HorizontalAlignment="Left" Margin="15" Content="Назад" FontSize="25" Click="BackBTN_Click"/>
+
+        <Label Content="Отзыв" FontSize="35" Margin="10"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25,0,0,0">
+            <Label Content="Введите оценку (от 0 до 10)" FontSize="20" Margin="0,0,0,10"/>
+            <TextBox x:Name="RevNumTB" Height="25" TextChanged="RevNumTB_TextChanged" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+            <Label Content="Введите содержание отзыва" FontSize="20" Margin="0,80,0,0"/>
+            <TextBox Height="150" Width="350"/>
+        </StackPanel>
+
+        <Button x:Name="RevBTN" Grid.Column="1" Height="50" Width="100" HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" Margin="15" Content="Отправить" FontSize="20" IsEnabled="False" Click="RevBTN_Click"/>
+    </Grid>
+</Page>
