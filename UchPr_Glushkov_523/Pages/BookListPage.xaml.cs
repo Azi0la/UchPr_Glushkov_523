@@ -109,7 +109,9 @@ namespace UchPr_Glushkov_523.Pages
 
             var b = new List<Genre>();
             foreach (var i in GenreList.Items){
-                if(i )
+                if (i)
+                {
+                }
             }
             Genre SelGen = GenreList.SelectedItem as Genre;
             if(SelGen != null)
