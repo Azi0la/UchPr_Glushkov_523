@@ -107,18 +107,18 @@ namespace UchPr_Glushkov_523.Pages
                     break;
             }
 
-            var b = new List<Genre>();
-            foreach (var i in GenreList.Items){
-                if (i)
-                {
-                }
-            }
-            Genre SelGen = GenreList.SelectedItem as Genre;
-            if(SelGen != null)
-            {
-                List<BookGenre> g = Core.Context.BookGenre.Where(bg => bg.GenreID == (SelGen.ID)).ToList();
-                FilterBooks = g.Select(genr => genr.Book).ToList();
-            }
+            //var b = new List<Genre>();
+            //foreach (var i in GenreList.Items){
+            //    if (i)
+            //    {
+            //    }
+            //}
+            //Genre SelGen = GenreList.SelectedItem as Genre;
+            //if(SelGen != null)
+            //{
+            //    List<BookGenre> g = Core.Context.BookGenre.Where(bg => bg.GenreID == (SelGen.ID)).ToList();
+            //    FilterBooks = g.Select(genr => genr.Book).ToList();
+            //}
             
 
 

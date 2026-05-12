@@ -20,9 +20,18 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class UserPage : Page
     {
+        public static List<Review> r = Core.Context.Review.ToList();
+
         public UserPage()
         {
             InitializeComponent();
+            DataContext = MainWindow.user;
+            RevUsList.ItemsSource = r.Where(c => c.UserID == MainWindow.user.ID).ToList();
+        }
+
+        private void ApplicBTN_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

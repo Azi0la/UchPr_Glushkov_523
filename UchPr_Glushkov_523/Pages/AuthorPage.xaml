@@ -7,9 +7,74 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AuthorPage"
-      Background="DarkRed">
+      Background="Salmon">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="AddBookBTN" Height="50" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Content="Добавить &#x0a;    книгу" FontSize="15"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Написанные книги" HorizontalAlignment="Center" FontSize="20" Grid.Row="0"></Label>
+            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="BookAuthList"
+         MouseDoubleClick="BookAuthList_MouseDoubleClick" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Image Source="{Binding ImagePath}" Width="100" Height="150"/>
+                            <TextBlock Text="{Binding Title}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding User.Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Stretch">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Книги в заморозке" HorizontalAlignment="Center" FontSize="20" Grid.Row="0"></Label>
+            <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="BookFrozenList"
+MouseDoubleClick="BookFrozenList_MouseDoubleClick" Grid.Row="1" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Image Source="{Binding ImagePath}" Width="100" Height="150"/>
+                            <TextBlock Text="{Binding Title}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding User.Name}"/>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="Оценка: {0}({1})">
+                                        <Binding Path="Rating"/>
+                                        <Binding Path="ReviewCount"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <!--<TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}"/>
+       <TextBlock Text="{Binding ReviewCount, StringFormat=({0})}"/>-->
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Stretch">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
     </Grid>
 </Page>

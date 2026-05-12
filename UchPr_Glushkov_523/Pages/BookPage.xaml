@@ -51,7 +51,7 @@
                     <StackPanel>
                         <TextBlock Text="{Binding User.Name}"/>
                         <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}"/>
-                        <TextBlock Text="{Binding Text}"/>
+                            <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

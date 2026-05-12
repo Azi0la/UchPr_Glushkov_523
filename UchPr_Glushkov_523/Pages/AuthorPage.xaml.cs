@@ -20,9 +20,22 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class AuthorPage : Page
     {
+        public static List<Book> books = Core.Context.Book.ToList();
         public AuthorPage()
         {
             InitializeComponent();
+            BookAuthList.ItemsSource = books.Where(c => c.AuthorID == MainWindow.user.ID && c.IsFrozen == false).ToList();
+            BookFrozenList.ItemsSource = books.Where(c => c.AuthorID == MainWindow.user.ID && c.IsFrozen == true).ToList();
+        }
+
+        private void BookAuthList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void BookFrozenList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

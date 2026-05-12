@@ -20,9 +20,16 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class AdministrationPage : Page
     {
+        public static List<User> u = Core.Context.User.ToList();
         public AdministrationPage()
         {
             InitializeComponent();
+            AdmUserList.ItemsSource = u;
+        }
+
+        private void AdmUserList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -11,9 +11,40 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="BackBTN" Height="50" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="15" Content="Назад"/>
+        <StackPanel VerticalAlignment="Top">
+            <TextBlock Text="{Binding Name, StringFormat=Имя: {0}}" Margin="20,20,0,0" FontSize="20"/>
+            <TextBlock Text="{Binding Login, StringFormat=Логин: {0}}" Margin="20,5,0,0" FontSize="20"/>
+            <TextBlock Text="{Binding Email, StringFormat=Почта: {0}}" Margin="20,5,0,0" FontSize="20"/>
+            <TextBlock Text="{Binding Role.RoleName, StringFormat=Роль: {0}}" Margin="20,5,0,0" FontSize="20"/>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Отзывы" HorizontalAlignment="Center" FontSize="20" Grid.Row="0"></Label>
+            <ListBox x:Name="RevUsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Book.Title}"/>
+                            <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}"/>
+                            <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </Grid>
+        <Button x:Name="ApplicBTN" Height="50" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Visibility="Visible" Content="Податься &#x0a;в авторы" FontSize="15" Click="ApplicBTN_Click"/>
     </Grid>
 </Page>

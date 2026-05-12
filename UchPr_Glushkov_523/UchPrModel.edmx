@@ -68,7 +68,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
-          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="Text" Type="nvarchar(max)" />
         </EntityType>
