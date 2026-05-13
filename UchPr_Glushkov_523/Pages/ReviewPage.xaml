@@ -15,10 +15,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="BackBTN" Width="100" Height="50" VerticalAlignment="Bottom" 
-                HorizontalAlignment="Left" Margin="15" Content="Назад" FontSize="25" Click="BackBTN_Click"/>
-
-        <Label Content="Отзыв" FontSize="35" Margin="10"/>
+        <Label Content="Отзыв" FontSize="35" Margin="10,10,0,0"/>
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25,0,0,0">
             <Label Content="Введите оценку (от 0 до 10)" FontSize="20" Margin="0,0,0,10"/>
             <TextBox x:Name="RevNumTB" Height="25" TextChanged="RevNumTB_TextChanged" />
@@ -31,5 +28,9 @@
 
         <Button x:Name="RevBTN" Grid.Column="1" Height="50" Width="100" HorizontalAlignment="Right" 
                 VerticalAlignment="Bottom" Margin="15" Content="Отправить" FontSize="20" IsEnabled="False" Click="RevBTN_Click"/>
+
+        <Button x:Name="BackBTN" Width="100" Height="50" VerticalAlignment="Bottom" 
+                HorizontalAlignment="Left" Margin="15" Content="Назад" FontSize="25" Click="BackBTN_Click"/>
+
     </Grid>
 </Page>

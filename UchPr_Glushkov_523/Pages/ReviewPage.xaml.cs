@@ -29,7 +29,10 @@ namespace UchPr_Glushkov_523.Pages
 
         private void BackBTN_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService.CanGoBack) { NavigationService.GoBack(); }
+            if (NavigationService.CanGoBack) 
+            { 
+                NavigationService.GoBack(); 
+            }
         }
 
         private void RevNumTB_TextChanged(object sender, TextChangedEventArgs e)

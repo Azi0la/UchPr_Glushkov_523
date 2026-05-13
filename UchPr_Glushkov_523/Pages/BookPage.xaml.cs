@@ -51,7 +51,7 @@ namespace UchPr_Glushkov_523.Pages
             }
 
             //var lbl = bookGenres.Select();
-
+            GenreTB.Text = "";
             foreach (BookGenre b in bookGenres)
             {
                 GenreTB.Text += g.FirstOrDefault(c => c.ID == b.GenreID).Name.ToString();
