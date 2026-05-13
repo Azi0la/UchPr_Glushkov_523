@@ -169,6 +169,11 @@ namespace UchPr_Glushkov_523.Pages
         {
             NavigationService.Navigate(new ReviewPage(book));
         }
+
+        private void BookComplBTN_Click(object sender, RoutedEventArgs e)
+        {
+            new ComplaintPage(book);
+        }
     }
 }
 
