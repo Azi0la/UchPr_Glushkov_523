@@ -46,22 +46,22 @@
 
             <Label Content="Отзывы" HorizontalAlignment="Center" FontSize="20" Grid.Row="0"></Label>
             <ListBox x:Name="ReviewList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding User.Name}"/>
-                        <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}"/>
-                            <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical">
-                    </WrapPanel>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
+                 <ListBox.ItemTemplate>
+                     <DataTemplate>
+                         <StackPanel>
+                             <TextBlock Text="{Binding User.Name}"/>
+                             <TextBlock Text="{Binding Rating, StringFormat=Оценка: {0}}"/>
+                                 <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
+                         </StackPanel>
+                     </DataTemplate>
+                 </ListBox.ItemTemplate>
+                 <ListBox.ItemsPanel>
+                     <ItemsPanelTemplate>
+                         <WrapPanel HorizontalAlignment="Stretch" Orientation="Vertical">
+                         </WrapPanel>
+                     </ItemsPanelTemplate>
+                 </ListBox.ItemsPanel>
+            </ListBox>
         </Grid>
     </Grid>
 </Page>

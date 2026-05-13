@@ -49,14 +49,19 @@ namespace UchPr_Glushkov_523.Pages
             List<string> nums = new List<string> { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
             if (nums.Contains(RevNumTB.Text))
             {
-
+                int be = int.Parse(RevNumTB.Text);
                 Review rev = new Review
                 {
                     UserID = MainWindow.user.ID,
                     BookID = book.ID,
-                    //Rating = RevNumTB.Text.
-                    //перевести текст в инт над созданием жкземпляра
+                    Rating = be,
+                    CreateDate = DateTime.Now,
+                    Text = RevTextTB.Text
                 };
+                Core.Context.Review.Add(rev);
+                Core.Context.SaveChanges();
+                MessageBox.Show("Комментарий опубликован!");
+                NavigationService.Navigate(new CatalogPage());
             }
             else 
             {

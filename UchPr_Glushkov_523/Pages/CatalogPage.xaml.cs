@@ -20,12 +20,15 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class CatalogPage : Page
     {
-        public static List<Book> books = Core.Context.Book.ToList();
-        public static List<Genre> Genres = Core.Context.Genre.ToList();
+        public List<Book> books = Core.Context.Book.ToList();
+        public List<Genre> Genres = Core.Context.Genre.ToList();
         public CatalogPage()
         {
             InitializeComponent();
+            Core.Update();
+            books = Core.Context.Book.ToList();
             BookList.ItemsSource = books;
+            Genres = Core.Context.Genre.ToList();
             List<String> sorting = new List<String> { "По Названию", "По Оценке" };
             FilterBox.ItemsSource = sorting;
             GenreList.ItemsSource = Genres;

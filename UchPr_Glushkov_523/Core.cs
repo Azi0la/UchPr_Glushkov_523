@@ -9,5 +9,9 @@ namespace UchPr_Glushkov_523
     internal class Core
     {
         public static UchPr_GlushkovEntities1 Context = new UchPr_GlushkovEntities1();
+        public static void Update()
+        {
+            Context = new UchPr_GlushkovEntities1();
+        }
     }
 }

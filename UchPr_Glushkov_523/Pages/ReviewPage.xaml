@@ -26,7 +26,7 @@
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center">
             <Label Content="Введите содержание отзыва" FontSize="20" Margin="0,80,0,0"/>
-            <TextBox Height="150" Width="350"/>
+            <TextBox x:Name="RevTextTB" Height="150" Width="350"/>
         </StackPanel>
 
         <Button x:Name="RevBTN" Grid.Column="1" Height="50" Width="100" HorizontalAlignment="Right" 

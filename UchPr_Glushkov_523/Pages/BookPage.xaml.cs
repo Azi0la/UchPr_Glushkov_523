@@ -20,10 +20,10 @@ namespace UchPr_Glushkov_523.Pages
     /// </summary>
     public partial class BookPage : Page
     {
-        public static List<BookGenre> bg = Core.Context.BookGenre.ToList();
-        public static List<Genre> g = Core.Context.Genre.ToList();
-        public static List<Review> r = Core.Context.Review.ToList();
-        public static List<ReadingList> rl = Core.Context.ReadingList.ToList();
+        public List<BookGenre> bg = Core.Context.BookGenre.ToList();
+        public List<Genre> g = Core.Context.Genre.ToList();
+        public List<Review> r = Core.Context.Review.ToList();
+        public List<ReadingList> rl = Core.Context.ReadingList.ToList();
         Book book;
         public BookPage(Book _book)
         {
@@ -31,6 +31,12 @@ namespace UchPr_Glushkov_523.Pages
             book = _book;
             DataContext = _book;
 
+           
+        }
+        private void Loading()
+        {
+            ReviewList.ItemsSource = null;
+            StatusCB.ItemsSource = null;
             ReviewList.ItemsSource = r.Where(c => c.BookID == book.ID).ToList();
             List<String> sorting = new List<String> { "Заброшено", "В планах", "Читаю", "Прочитано" };
             List<BookGenre> bookGenres = bg.Where(c => c.BookID == book.ID).ToList();
@@ -154,11 +160,7 @@ namespace UchPr_Glushkov_523.Pages
             NavigationService.Navigate(new ReadPage(book));
         }
 
-        private void Loading()
-        {
 
-
-        }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
 => Loading();
