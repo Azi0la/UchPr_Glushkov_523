@@ -33,7 +33,7 @@ namespace UchPr_Glushkov_523.Pages
             InitializeComponent();
             List<String> sorting = new List<String> { "По Названию", "По Оценке" };
             FilterBox.ItemsSource = sorting;
-            List<String> status = new List<String> {"All","Заброшено", "В планах", "Читаю", "Прочитано" };
+            List<String> status = new List<String> { "All", "Заброшено", "В планах", "Читаю", "Прочитано" };
             StatusBox.ItemsSource = status;
             BookList.ItemsSource = books;
             GenreList.ItemsSource = Genres;
@@ -68,19 +68,19 @@ namespace UchPr_Glushkov_523.Pages
         private void Search()
         {
             var FilterBooks = Core.Context.Book.ToList();
-            if (SearchBar == null && FilterBox ==null && StatusBox == null&& GenreList==null) return;
-            
+            if (SearchBar == null && FilterBox == null && StatusBox == null && GenreList == null) return;
+
             if (!string.IsNullOrWhiteSpace(SearchBar.Text))
             {
-                FilterBooks = FilterBooks.Where(p => p.Title.ToLower().Contains(SearchBar.Text.ToLower()) 
+                FilterBooks = FilterBooks.Where(p => p.Title.ToLower().Contains(SearchBar.Text.ToLower())
                 || p.User.Name.ToLower().Contains(SearchBar.Text.ToLower())).ToList();
             }
 
-            if(FilterBox.SelectedIndex == 0)
+            if (FilterBox.SelectedIndex == 0)
             {
                 FilterBooks = FilterBooks.OrderBy(p => p.Title).ToList();
             }
-            else if(FilterBox.SelectedIndex == 1)
+            else if (FilterBox.SelectedIndex == 1)
             {
                 FilterBooks = FilterBooks.OrderBy(p => p.Rating).ToList();
             }
@@ -95,7 +95,7 @@ namespace UchPr_Glushkov_523.Pages
                     z = StatusBox.SelectedIndex + 1;
                     FilterBooks = FilterBooks.Where(c => c.ReadingList.Any(m => m.ReadingStatus.ID == z && m.UserID == MainWindow.user.ID)).ToList();
                     break;
-                 case 3:
+                case 3:
                     z = StatusBox.SelectedIndex + 1;
                     FilterBooks = FilterBooks.Where(c => c.ReadingList.Any(m => m.ReadingStatus.ID == z && m.UserID == MainWindow.user.ID)).ToList();
                     break;
@@ -107,23 +107,31 @@ namespace UchPr_Glushkov_523.Pages
                     break;
             }
 
-            //var b = new List<Genre>();
-            //foreach (var i in GenreList.Items){
-            //    if (i)
-            //    {
-            //    }
-            //}
-            //Genre SelGen = GenreList.SelectedItem as Genre;
-            //if(SelGen != null)
-            //{
-            //    List<BookGenre> g = Core.Context.BookGenre.Where(bg => bg.GenreID == (SelGen.ID)).ToList();
-            //    FilterBooks = g.Select(genr => genr.Book).ToList();
-            //}
-            
+            var b = new List<Genre>();
+            foreach (CheckBox i in GenreList.Items)
+            {
+                if (i.IsChecked == true)
+                {
+                    if(i.DataContext is Genre genre) b.Add(genre);
+                }
+                //}
+                //Genre SelGen = GenreList.SelectedItem as Genre;
+                //if(SelGen != null)
+                //{
+                //    List<BookGenre> g = Core.Context.BookGenre.Where(bg => bg.GenreID == (SelGen.ID)).ToList();
+                //    FilterBooks = g.Select(genr => genr.Book).ToList();
+                //}
+                
+            }
+            foreach (var p in b)
+            {
+                MessageBox.Show(p.Name);
+            }
+
 
 
             BookList.ItemsSource = FilterBooks;
-        }
 
+        }
     }
 }

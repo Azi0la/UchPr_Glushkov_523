@@ -57,14 +57,14 @@ namespace UchPr_Glushkov_523.Pages
         {
             Complaint NewComp = new Complaint 
             {
-                TargetUserId = curuser.ID,
-                BookId = curbook.ID,
-                ReviewId = currev.ID,
+                TargetUserId = curuser?.ID,
+                BookId = curbook?.ID,
+                ReviewId = currev?.ID,
                 Reason = ComplTB.Text,
                 AdminID = MainWindow.user.ID
             };
             Core.Context.Complaint.Add(NewComp);
-            Core.Update();
+            Core.Context.SaveChanges();
             MessageBox.Show("Жалоба отправлена!");
             if (NavigationService.CanGoBack) NavigationService.GoBack();
         }
