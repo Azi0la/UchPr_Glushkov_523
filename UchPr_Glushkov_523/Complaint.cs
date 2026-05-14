@@ -15,7 +15,7 @@ namespace UchPr_Glushkov_523
     public partial class Complaint
     {
         public int ID { get; set; }
-        public int UserId { get; set; }
+        public Nullable<int> TargetUserId { get; set; }
         public Nullable<int> BookId { get; set; }
         public Nullable<int> ReviewId { get; set; }
         public string Reason { get; set; }
@@ -23,6 +23,5 @@ namespace UchPr_Glushkov_523
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
     }
 }

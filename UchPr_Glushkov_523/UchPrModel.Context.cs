@@ -27,7 +27,6 @@ namespace UchPr_Glushkov_523
     
         public virtual DbSet<Book> Book { get; set; }
         public virtual DbSet<BookGenre> BookGenre { get; set; }
-        public virtual DbSet<Complaint> Complaint { get; set; }
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<ReadingList> ReadingList { get; set; }
         public virtual DbSet<ReadingStatus> ReadingStatus { get; set; }
@@ -37,5 +36,6 @@ namespace UchPr_Glushkov_523
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UnfreezeRequest> UnfreezeRequest { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Complaint> Complaint { get; set; }
     }
 }

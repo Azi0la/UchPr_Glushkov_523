@@ -9,11 +9,16 @@
       Title="ComplaintPage" Background="Salmon">
 
     <Grid>
-        <Label Content="Жалоба на" FontSize="35" Margin="10,10,0,0"/>
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="CompLB" FontSize="35" Margin="10,10,0,0"/>
+            <Label x:Name="BookLB" FontSize="20" Margin="0,25,0,0"/>
+            <Label x:Name="AuthLB" FontSize="20" Margin="-10,25,0,0"/>
+            <Label x:Name="ReviewLB" FontSize="20" Margin="-10,25,0,0"/>
+        </StackPanel>
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="Содержание жалобы:" FontSize="25" HorizontalAlignment="Left"/>
-            <TextBox x:Name="ComplTB" Height="100" Width="350"/>
+            <TextBox x:Name="ComplTB" Height="100" Width="350" TextChanged="ComplTB_TextChanged"/>
         </StackPanel>
         
         <Button x:Name="BackBTN" Height="50" Width="100" 
@@ -21,6 +26,6 @@
                 Content="Назад" Click="BackBTN_Click" FontSize="20"/>
         <Button x:Name="SendBTN" Height="50" Width="100" 
                 VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15" 
-                Content="Отправить" Click="SendBTN_Click" FontSize="20"/>
+                Content="Отправить" Click="SendBTN_Click" FontSize="20" IsEnabled="False"/>
     </Grid>
 </Page>

@@ -18,12 +18,11 @@ namespace UchPr_Glushkov_523
         public User()
         {
             this.Book = new HashSet<Book>();
-            this.Complaint = new HashSet<Complaint>();
-            this.Complaint1 = new HashSet<Complaint>();
             this.Review = new HashSet<Review>();
             this.RoleApplication = new HashSet<RoleApplication>();
             this.UnfreezeRequest = new HashSet<UnfreezeRequest>();
             this.ReadingList = new HashSet<ReadingList>();
+            this.Complaint = new HashSet<Complaint>();
         }
     
         public int ID { get; set; }
@@ -37,10 +36,6 @@ namespace UchPr_Glushkov_523
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Book { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Complaint> Complaint { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Complaint> Complaint1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -49,5 +44,7 @@ namespace UchPr_Glushkov_523
         public virtual ICollection<UnfreezeRequest> UnfreezeRequest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReadingList> ReadingList { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Complaint> Complaint { get; set; }
     }
 }

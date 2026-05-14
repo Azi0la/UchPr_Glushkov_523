@@ -172,7 +172,19 @@ namespace UchPr_Glushkov_523.Pages
 
         private void BookComplBTN_Click(object sender, RoutedEventArgs e)
         {
-            new ComplaintPage(book);
+            NavigationService.Navigate(new ComplaintPage(book));
+        }
+
+        private void AuthComplBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ComplaintPage(null, book.User));
+        }
+
+        private void RevComplBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Button Btn = sender as Button;
+            Review SelectRev = Btn.DataContext as Review;
+            NavigationService.Navigate(new ComplaintPage(null, null, SelectRev));
         }
     }
 }

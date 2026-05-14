@@ -667,7 +667,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Complaint" EntitySet="Complaint" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <Association Name="FK_ReadingList_Book">
           <End Type="UchPr_GlushkovModel.Book" Role="Book" Multiplicity="1" />
           <End Type="UchPr_GlushkovModel.ReadingList" Role="ReadingList" Multiplicity="*" />
@@ -709,9 +709,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TargetUserId" Type="Int32" />
-          <Property Name="BookId" Type="Int32" />
-          <Property Name="ReviewId" Type="Int32" />
+          <Property Name="TargetUserId" Type="Int32" Nullable="true" />
+          <Property Name="BookId" Type="Int32" Nullable="true" />
+          <Property Name="ReviewId" Type="Int32" Nullable="true" />
           <Property Name="Reason" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="AdminID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Book" Relationship="UchPr_GlushkovModel.FK_Complaint_Book" FromRole="Complaint" ToRole="Book" />
@@ -741,7 +741,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
