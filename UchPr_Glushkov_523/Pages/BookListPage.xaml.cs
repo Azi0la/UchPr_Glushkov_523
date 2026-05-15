@@ -27,6 +27,7 @@ namespace UchPr_Glushkov_523.Pages
         public static List<ReadingList> rl = Core.Context.ReadingList.ToList();
         public static List<Book> books = Core.Context.Book.ToList();
         public static List<Genre> Genres = Core.Context.Genre.ToList();
+        public static List<Genre> selectedGenres = new List<Genre>();
 
         public BookListPage()
         {
@@ -37,7 +38,6 @@ namespace UchPr_Glushkov_523.Pages
             StatusBox.ItemsSource = status;
             BookList.ItemsSource = books;
             GenreList.ItemsSource = Genres;
-
         }
 
         private void CheckBox_Click(object sender, RoutedEventArgs e)
@@ -108,30 +108,23 @@ namespace UchPr_Glushkov_523.Pages
             }
 
             var b = new List<Genre>();
-            foreach (CheckBox i in GenreList.Items)
-            {
-                if (i.IsChecked == true)
-                {
-                    if(i.DataContext is Genre genre) b.Add(genre);
-                }
-                //}
-                //Genre SelGen = GenreList.SelectedItem as Genre;
-                //if(SelGen != null)
-                //{
-                //    List<BookGenre> g = Core.Context.BookGenre.Where(bg => bg.GenreID == (SelGen.ID)).ToList();
-                //    FilterBooks = g.Select(genr => genr.Book).ToList();
-                //}
-                
-            }
-            foreach (var p in b)
-            {
-                MessageBox.Show(p.Name);
-            }
-
+            FilterBooks = FilterBooks.Where(fb => selectedGenres.All(sg => fb.BookGenre.Select(bg => bg.Genre).Contains(sg))).ToList();
 
 
             BookList.ItemsSource = FilterBooks;
 
+        }
+
+        private void GenreBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            selectedGenres.Add(g.FirstOrDefault(genr => genr.Name == checkBox.Content.ToString()));
+        }
+
+        private void GenreBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            selectedGenres.Remove(g.FirstOrDefault(genr => genr.Name == checkBox.Content.ToString()));
         }
     }
 }
