@@ -18,9 +18,9 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Label Content="Содержание жалобы:" FontSize="25" HorizontalAlignment="Left"/>
-            <TextBox x:Name="ComplTB" Height="100" Width="350" TextChanged="ComplTB_TextChanged"/>
+            <TextBox x:Name="ComplTB" Height="100" Width="350" TextChanged="Input_Changed"/>
             <Label Content="Тип нарушения: " FontSize="25" />
-            <ComboBox x:Name="MotiveCB" Height="30"/>
+            <ComboBox x:Name="MotiveCB" Height="30" SelectionChanged="Input_Changed"/>
         </StackPanel>
         
         <Button x:Name="BackBTN" Height="50" Width="100" 

@@ -74,9 +74,14 @@ namespace UchPr_Glushkov_523.Pages
             if (NavigationService.CanGoBack) NavigationService.GoBack();
         }
 
-        private void ComplTB_TextChanged(object sender, TextChangedEventArgs e)
+        private void Input_Changed(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(ComplTB.Text) && !string.IsNullOrEmpty(ComplTB.Text))
+            UpdateButton();
+        }
+
+        private void UpdateButton()
+        {
+            if (!string.IsNullOrEmpty(ComplTB.Text) && MotiveCB.SelectedItem != null)
             {
                 SendBTN.IsEnabled = true;
             }
@@ -85,5 +90,6 @@ namespace UchPr_Glushkov_523.Pages
                 SendBTN.IsEnabled = false;
             }
         }
+
     }
 }
