@@ -20,6 +20,7 @@ namespace UchPr_Glushkov_523
         public int Rating { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string Text { get; set; }
+        public bool IsFrozen { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

@@ -24,6 +24,21 @@ namespace UchPr_Glushkov_523.Pages
         {
             InitializeComponent();
             MainePage.NavigationService.Navigate(new Pages.CatalogPage());
+            if (MainWindow.user.RoleID == 2)
+            {
+                ButtAuthor.Visibility = Visibility.Visible;
+                ButtAuthor.IsEnabled = true;
+            }
+            else if (MainWindow.user.RoleID == 3)
+            {
+                ButtAdmin.Visibility = Visibility.Visible;
+                ButtAdmin.IsEnabled = true;
+            }
+            else if (MainWindow.user.IsFrozen == true)
+            {
+                ButtWarn.Visibility = Visibility.Visible;
+                ButtWarn.IsEnabled = true;
+            }
         }
 
         private void ButtCatalog_Click(object sender, RoutedEventArgs e)

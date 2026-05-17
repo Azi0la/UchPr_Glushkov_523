@@ -59,7 +59,8 @@ namespace UchPr_Glushkov_523.Pages
                     BookID = book.ID,
                     Rating = be,
                     CreateDate = DateTime.Now,
-                    Text = RevTextTB.Text
+                    Text = RevTextTB.Text,
+                    IsFrozen = false
                 };
                 Core.Context.Review.Add(rev);
                 Core.Context.SaveChanges();

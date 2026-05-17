@@ -18,22 +18,22 @@
         <ScrollViewer Grid.Column="1">
             <Grid>
                 <StackPanel>
-                    <Button x:Name="ButtCatalog" Height="100" Margin="10" Click="ButtCatalog_Click" Background="Transparent">
+                    <Button x:Name="ButtCatalog" Height="50" Margin="10" Click="ButtCatalog_Click" Background="Transparent">
                         <Image Source="/Images/catalog.png"/>
                     </Button>
-                    <Button x:Name="ButtBookList" Height="100" Margin="10" Click="ButtBookList_Click" Background="Transparent">
+                    <Button x:Name="ButtBookList" Height="50" Margin="10" Click="ButtBookList_Click" Background="Transparent">
                         <Image Source="/Images/list.png"/>
                     </Button>
-                    <Button x:Name="ButtAdmin" Height="100" Margin="10" Click="ButtAdmin_Click"  Background="Transparent">
-                        <Image Source="/Images/hat.png"/>
-                    </Button>
-                    <Button x:Name="ButtAuthor" Height="100" Margin="10" Click="ButtAuthor_Click"  Background="Transparent">
-                        <Image Source="/Images/pen.png"/>
-                    </Button>
-                    <Button x:Name="ButtUser" Height="100" Margin="10" Click="ButtUser_Click"  Background="Transparent">
+                    <Button x:Name="ButtUser" Height="50" Margin="10" Click="ButtUser_Click"  Background="Transparent">
                         <Image Source="/Images/user.png"/>
                     </Button>
-                    <Button x:Name="ButtWarn" Height="100" Margin="10" Click="ButtWarn_Click"  Background="Transparent">
+                    <Button x:Name="ButtAdmin" Height="50" Margin="10" Click="ButtAdmin_Click"  Background="Transparent" Visibility="Hidden" IsEnabled="False">
+                        <Image Source="/Images/hat.png"/>
+                    </Button>
+                    <Button x:Name="ButtAuthor" Height="50" Margin="10" Click="ButtAuthor_Click"  Background="Transparent" Visibility="Hidden" IsEnabled="False">
+                        <Image Source="/Images/pen.png"/>
+                    </Button>
+                    <Button x:Name="ButtWarn" Height="50" Margin="10" Click="ButtWarn_Click"  Background="Transparent" Visibility="Hidden" IsEnabled="False">
                         <Image Source="/Images/warning.png"/>
                     </Button>
                 </StackPanel>
