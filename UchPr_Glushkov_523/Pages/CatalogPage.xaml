@@ -58,10 +58,15 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="GenreList" Height="375" VerticalAlignment="Top">
+        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 x:Name="GenreList" Height="375" 
+                 VerticalAlignment="Top">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox Content="{Binding Name}"  Tag="{Binding ID}" Click="CheckBox_Click" x:Name="GenreBox" Checked="GenreBox_Checked" Unchecked="GenreBox_Unchecked"/>
+                    <CheckBox Content="{Binding Name}"  
+                              Tag="{Binding ID}" 
+                              Click="CheckBox_Click" x:Name="GenreBox" 
+                              Checked="GenreBox_Checked" Unchecked="GenreBox_Unchecked"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

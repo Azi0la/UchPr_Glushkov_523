@@ -27,7 +27,7 @@ namespace UchPr_Glushkov_523.Pages
         public static List<ReadingList> rl = Core.Context.ReadingList.ToList();
         public static List<Book> books = Core.Context.Book.ToList();
         public static List<Genre> Genres = Core.Context.Genre.ToList();
-        public static List<Genre> selectedGenres = new List<Genre>();
+        public List<Genre> selectedGenres = new List<Genre>();
 
         public BookListPage()
         {
@@ -82,7 +82,7 @@ namespace UchPr_Glushkov_523.Pages
             }
             else if (FilterBox.SelectedIndex == 1)
             {
-                FilterBooks = FilterBooks.OrderBy(p => p.Rating).ToList();
+                FilterBooks = FilterBooks.OrderByDescending(p => p.Rating).ToList();
             }
             int z;
             switch (StatusBox.SelectedIndex)
@@ -107,8 +107,7 @@ namespace UchPr_Glushkov_523.Pages
                     break;
             }
 
-            var b = new List<Genre>();
-            FilterBooks = FilterBooks.Where(fb => selectedGenres.All(sg => fb.BookGenre.Select(bg => bg.Genre).Contains(sg))).ToList();
+            FilterBooks = FilterBooks.Where(fb => selectedGenres.All(sg => fb.BookGenre.Any(bg => bg.GenreID == sg.ID))).ToList();
 
 
             BookList.ItemsSource = FilterBooks;
