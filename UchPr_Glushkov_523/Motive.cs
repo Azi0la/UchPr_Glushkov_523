@@ -12,41 +12,27 @@ namespace UchPr_Glushkov_523
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Motive
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Motive()
         {
             this.Book = new HashSet<Book>();
             this.Complaint = new HashSet<Complaint>();
-            this.ReadingList = new HashSet<ReadingList>();
             this.Review = new HashSet<Review>();
-            this.RoleApplication = new HashSet<RoleApplication>();
-            this.UnfreezeRequest = new HashSet<UnfreezeRequest>();
+            this.User = new HashSet<User>();
         }
     
         public int ID { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
         public string Name { get; set; }
-        public int RoleID { get; set; }
-        public bool IsFrozen { get; set; }
-        public Nullable<int> MotiveID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Book { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Complaint> Complaint { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReadingList> ReadingList { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }
-        public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoleApplication> RoleApplication { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UnfreezeRequest> UnfreezeRequest { get; set; }
-        public virtual Motive Motive { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

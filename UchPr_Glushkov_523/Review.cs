@@ -21,8 +21,10 @@ namespace UchPr_Glushkov_523
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string Text { get; set; }
         public bool IsFrozen { get; set; }
+        public Nullable<int> MotiveID { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }
+        public virtual Motive Motive { get; set; }
     }
 }

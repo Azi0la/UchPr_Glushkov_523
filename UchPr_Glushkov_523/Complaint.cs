@@ -20,8 +20,10 @@ namespace UchPr_Glushkov_523
         public Nullable<int> ReviewId { get; set; }
         public string Reason { get; set; }
         public int AdminID { get; set; }
+        public int MotiveID { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }
+        public virtual Motive Motive { get; set; }
     }
 }

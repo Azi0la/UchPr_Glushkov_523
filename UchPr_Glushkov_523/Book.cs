@@ -32,8 +32,8 @@ namespace UchPr_Glushkov_523
         public int AuthorID { get; set; }
         public bool IsFrozen { get; set; }
         public Nullable<double> Rating { get; set; }
+        public Nullable<int> MotiveID { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookGenre> BookGenre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -44,5 +44,7 @@ namespace UchPr_Glushkov_523
         public virtual ICollection<ReadingList> ReadingList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Complaint> Complaint { get; set; }
+        public virtual User User { get; set; }
+        public virtual Motive Motive { get; set; }
     }
 }

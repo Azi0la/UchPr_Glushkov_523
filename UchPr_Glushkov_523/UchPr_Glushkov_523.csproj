@@ -125,7 +125,11 @@
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Core.cs" />
+    <Compile Include="FrozenStuff.cs" />
     <Compile Include="Genre.cs">
+      <DependentUpon>UchPrModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Motive.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdministrationPage.xaml.cs">

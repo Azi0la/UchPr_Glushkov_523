@@ -15,22 +15,27 @@
         <EntityTypeShape EntityType="UchPr_GlushkovModel.RoleApplication" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.UnfreezeRequest" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="UchPr_GlushkovModel.User" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_Book_User" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_BookGenre_Book" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_Review_Book" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_UnfreezeRequest_Book" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_BookGenre_Genre" ManuallyRouted="false" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_Review_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_User_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_RoleApplication_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_UnfreezeRequest_User" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_ReadingList_Book" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_ReadingList_ReadingStatus" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_ReadingList_User" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.Complaint" Width="1.5" PointX="7.5" PointY="9.875" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_Book" />
+        <EntityTypeShape EntityType="UchPr_GlushkovModel.Motive" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="UchPr_GlushkovModel.User" Width="1.5" PointX="3" PointY="7" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Book_User" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_User1" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_ReadingList_User" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Review_User" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_User_Role" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_RoleApplication_User" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_UnfreezeRequest_User" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Book_Motive" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_Motive" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Review_Motive" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_User_Motive" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,11 +17,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
+        <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="8*"/>
-            </Grid.RowDefinitions>
+         </Grid.RowDefinitions>
             <Label Content="Пользователи" HorizontalAlignment="Center" FontSize="15" Grid.Row="0"></Label>
             <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="AdmUserList"
 MouseDoubleClick="AdmUserList_MouseDoubleClick" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" d:ItemsSource="{d:SampleData ItemCount=5}">
@@ -41,6 +40,29 @@ MouseDoubleClick="AdmUserList_MouseDoubleClick" Grid.Row="1" Grid.Column="0" Gri
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>
-        </Grid>
+
+        <Label Content="Замороженные" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="1"></Label>
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="FrozenList"
+                 Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <Label Content="Заявки на &#10;авторство" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="2"></Label>
+
+        <Label Content="Заявки на &#10;разморозку" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="3"></Label>
+
+        <Label Content="Жалобы" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="4"></Label>
+
     </Grid>
 </Page>

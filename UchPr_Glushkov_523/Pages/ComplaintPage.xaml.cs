@@ -24,12 +24,16 @@ namespace UchPr_Glushkov_523.Pages
         private Book curbook;
         private User curuser;
         private Review currev;
+        public static List<Motive> m = Core.Context.Motive.ToList();
         public ComplaintPage(Book BookID= null, User usId = null, Review RevID = null)
         {
             InitializeComponent();
             curbook = BookID;
             curuser = usId;
             currev = RevID;
+            List<String> motives = new List<String> { "Спам или реклама", "Оскорбление и ненависть", "Взрослый и шокирующий контент", "Мошенничество и обман",
+            "Пиратство и плагиат", "Другое"};
+            MotiveCB.ItemsSource = motives;
             CompLB.Content = ("Жалоба на ");
             if (BookID != null) {
                 CompLB.Content += ("книгу:");
@@ -55,13 +59,14 @@ namespace UchPr_Glushkov_523.Pages
 
         private void SendBTN_Click(object sender, RoutedEventArgs e)
         {
-            Complaint NewComp = new Complaint 
+            Complaint NewComp = new Complaint
             {
                 TargetUserId = curuser?.ID,
                 BookId = curbook?.ID,
                 ReviewId = currev?.ID,
                 Reason = ComplTB.Text,
-                AdminID = MainWindow.user.ID
+                AdminID = MainWindow.user.ID,
+                MotiveID = MotiveCB.SelectedIndex + 1
             };
             Core.Context.Complaint.Add(NewComp);
             Core.Context.SaveChanges();
