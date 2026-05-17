@@ -29,7 +29,7 @@ namespace UchPr_Glushkov_523.Pages
 
         private void AdmUserList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            NavigationService.Navigate(new UserControlPage(AdmUserList.SelectedItem as  User));
         }
     }
 }
