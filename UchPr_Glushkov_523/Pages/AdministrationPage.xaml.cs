@@ -25,6 +25,7 @@ namespace UchPr_Glushkov_523.Pages
         public List<Review> r = Core.Context.Review.ToList();
         public List<RoleApplication> ra = Core.Context.RoleApplication.ToList();
         public List<UnfreezeRequest> ur = Core.Context.UnfreezeRequest.ToList();
+        public List<Complaint> cp = Core.Context.Complaint.ToList();
 
         public List<FrozenStuff> FS = new List<FrozenStuff>();
 
@@ -47,6 +48,7 @@ namespace UchPr_Glushkov_523.Pages
             FrozenList.ItemsSource = FS;
             ApplicList.ItemsSource = ra.Where(f => f.IsProcessed == false);
             UnfrzList.ItemsSource = ur.Where(f => f.IsProcessed == false);
+            ComplList.ItemsSource = cp.Where(f => f.IsProcessed == false);
 
         }
 
@@ -106,6 +108,11 @@ namespace UchPr_Glushkov_523.Pages
                 Core.Context.SaveChanges();
                 NavigationService.Navigate(new AdministrationPage());
             }
+        }
+
+        private void ComplList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

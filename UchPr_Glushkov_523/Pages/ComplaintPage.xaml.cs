@@ -66,7 +66,8 @@ namespace UchPr_Glushkov_523.Pages
                 ReviewId = currev?.ID,
                 Reason = ComplTB.Text,
                 AdminID = MainWindow.user.ID,
-                MotiveID = MotiveCB.SelectedIndex + 1
+                MotiveID = MotiveCB.SelectedIndex + 1,
+                IsProcessed = false
             };
             Core.Context.Complaint.Add(NewComp);
             Core.Context.SaveChanges();

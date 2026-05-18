@@ -19,23 +19,24 @@
         <AssociationConnector Association="UchPr_GlushkovModel.FK_BookGenre_Genre" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_ReadingList_Book" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_ReadingList_ReadingStatus" />
-        <EntityTypeShape EntityType="UchPr_GlushkovModel.Complaint" Width="1.5" PointX="7.5" PointY="9.875" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_Book" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.Motive" Width="1.5" PointX="10.375" PointY="3.75" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.User" Width="1.5" PointX="3" PointY="7" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_Book_User" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_User1" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_ReadingList_User" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_Review_User" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_User_Role" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_RoleApplication_User" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_Book_Motive" />
-        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_Motive" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_Review_Motive" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_User_Motive" />
         <EntityTypeShape EntityType="UchPr_GlushkovModel.UnfreezeRequest" Width="1.5" PointX="7.5" PointY="3.125" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_UnfreezeRequest_Book" />
         <AssociationConnector Association="UchPr_GlushkovModel.FK_UnfreezeRequest_User" />
+        <EntityTypeShape EntityType="UchPr_GlushkovModel.Complaint" Width="1.5" PointX="12.75" PointY="5.75" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_Book" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_Motive" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_Review" />
+        <AssociationConnector Association="UchPr_GlushkovModel.FK_Complaint_User1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

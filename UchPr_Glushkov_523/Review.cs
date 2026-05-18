@@ -14,6 +14,12 @@ namespace UchPr_Glushkov_523
     
     public partial class Review
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Review()
+        {
+            this.Complaint = new HashSet<Complaint>();
+        }
+    
         public int ID { get; set; }
         public int UserID { get; set; }
         public int BookID { get; set; }
@@ -26,5 +32,7 @@ namespace UchPr_Glushkov_523
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }
         public virtual Motive Motive { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Complaint> Complaint { get; set; }
     }
 }

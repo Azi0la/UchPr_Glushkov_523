@@ -34,9 +34,9 @@ namespace UchPr_Glushkov_523
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<RoleApplication> RoleApplication { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Complaint> Complaint { get; set; }
         public virtual DbSet<Motive> Motive { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UnfreezeRequest> UnfreezeRequest { get; set; }
+        public virtual DbSet<Complaint> Complaint { get; set; }
     }
 }

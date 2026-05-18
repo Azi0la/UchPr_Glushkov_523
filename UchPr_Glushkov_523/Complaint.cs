@@ -21,9 +21,11 @@ namespace UchPr_Glushkov_523
         public string Reason { get; set; }
         public int AdminID { get; set; }
         public int MotiveID { get; set; }
+        public bool IsProcessed { get; set; }
     
         public virtual Book Book { get; set; }
-        public virtual User User { get; set; }
         public virtual Motive Motive { get; set; }
+        public virtual Review Review { get; set; }
+        public virtual User User { get; set; }
     }
 }

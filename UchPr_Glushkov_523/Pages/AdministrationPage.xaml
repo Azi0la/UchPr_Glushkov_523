@@ -98,6 +98,23 @@ MouseDoubleClick="AdmUserList_MouseDoubleClick" Grid.Row="1" Grid.Column="0" Gri
             </ListBox.ItemsPanel>
         </ListBox>
         <Label Content="Жалобы" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="4"></Label>
-
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ComplList" MouseDoubleClick="ComplList_MouseDoubleClick"
+ Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding CompType, StringFormat=Тип: {0}}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding CompName}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Motive.Name}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </Grid>
 </Page>

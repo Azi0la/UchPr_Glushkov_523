@@ -132,6 +132,7 @@
     <Compile Include="Complaint.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompType.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="FrozenStuff.cs" />
     <Compile Include="Genre.cs">

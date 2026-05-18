@@ -18,9 +18,9 @@ namespace UchPr_Glushkov_523
         public Motive()
         {
             this.Book = new HashSet<Book>();
-            this.Complaint = new HashSet<Complaint>();
             this.Review = new HashSet<Review>();
             this.User = new HashSet<User>();
+            this.Complaint = new HashSet<Complaint>();
         }
     
         public int ID { get; set; }
@@ -29,10 +29,10 @@ namespace UchPr_Glushkov_523
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Book { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Complaint> Complaint { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Complaint> Complaint { get; set; }
     }
 }

@@ -18,11 +18,11 @@ namespace UchPr_Glushkov_523
         public User()
         {
             this.Book = new HashSet<Book>();
-            this.Complaint = new HashSet<Complaint>();
             this.ReadingList = new HashSet<ReadingList>();
             this.Review = new HashSet<Review>();
             this.RoleApplication = new HashSet<RoleApplication>();
             this.UnfreezeRequest = new HashSet<UnfreezeRequest>();
+            this.Complaint = new HashSet<Complaint>();
         }
     
         public int ID { get; set; }
@@ -37,8 +37,6 @@ namespace UchPr_Glushkov_523
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Book { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Complaint> Complaint { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReadingList> ReadingList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }
@@ -48,5 +46,7 @@ namespace UchPr_Glushkov_523
         public virtual Motive Motive { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UnfreezeRequest> UnfreezeRequest { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Complaint> Complaint { get; set; }
     }
 }
