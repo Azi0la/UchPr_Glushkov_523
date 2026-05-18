@@ -15,7 +15,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="AddBookBTN" Height="50" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Content="Добавить &#x0a;    книгу" FontSize="15"/>
+        <Button x:Name="AddBookBTN" Height="50" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20" Content="Добавить &#x0a;    книгу" FontSize="15" Click="AddBookBTN_Click"/>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

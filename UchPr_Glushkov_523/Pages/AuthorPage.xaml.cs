@@ -32,7 +32,7 @@ namespace UchPr_Glushkov_523.Pages
 
         private void BookAuthList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            NavigationService.Navigate(new BookRedactPage(2, BookAuthList.SelectedItem as Book));
         }
 
         private void BookFrozenList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -40,6 +40,12 @@ namespace UchPr_Glushkov_523.Pages
             //Button Btn = sender as Button;
             //Book SelectBook = Btn.DataContext as Book;
             NavigationService.Navigate(new UnfreezePage(BookFrozenList.SelectedItem as Book));
+        }
+
+        private void AddBookBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Book book = new Book();
+            NavigationService.Navigate(new BookRedactPage(1, book));
         }
     }
 }

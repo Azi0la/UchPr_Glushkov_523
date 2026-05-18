@@ -60,7 +60,7 @@
         </ListBox>
         <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  x:Name="GenreList" Height="375" 
-                 VerticalAlignment="Top">
+                 VerticalAlignment="Top" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox Content="{Binding Name}"  
