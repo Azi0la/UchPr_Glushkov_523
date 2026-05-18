@@ -59,6 +59,12 @@ namespace UchPr_Glushkov_523.Pages
             }
 
             if(MainWindow.user.IsFrozen == true) ReviewBTN.IsEnabled = false;
+            if(MainWindow.user.RoleID == 3)
+            {
+                AuthFreezeBTN.IsEnabled = true;
+                AuthFreezeBTN.Visibility = Visibility.Visible;
+                AuthComplBTN.Visibility = Visibility.Hidden;
+            }
         }
 
 
@@ -187,6 +193,18 @@ namespace UchPr_Glushkov_523.Pages
             Button Btn = sender as Button;
             Review SelectRev = Btn.DataContext as Review;
             NavigationService.Navigate(new ComplaintPage(null, null, SelectRev));
+        }
+
+        private void AuthFreezeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminBlockPage(book.User));
+        }
+
+        private void RevBlockBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Button Btn = sender as Button;
+            Review SelectRev = Btn.DataContext as Review;
+            NavigationService.Navigate(new AdminBlockPage(null, SelectRev));
         }
     }
 }

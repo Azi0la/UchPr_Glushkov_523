@@ -112,7 +112,42 @@ namespace UchPr_Glushkov_523.Pages
 
         private void ComplList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            var SelItem = ComplList.SelectedItem as Complaint;
+            MessageBoxResult result = MessageBox.Show(SelItem.Reason + "\n" + SelItem.Motive.Name + "\n Принимается ли жалоба?",
+                "Заявка от " + SelItem.User.Name, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+            if (result == MessageBoxResult.Yes)
+            {
+                SelItem.IsProcessed = true;
+                var book = b.FirstOrDefault(x => x.ID == SelItem.BookId);
+                var user = u.FirstOrDefault(x => x.ID == SelItem.TargetUserId);
+                var rev = r.FirstOrDefault(x => x.ID == SelItem.ReviewId);
+                if (book != null)
+                {
+                    book.IsFrozen = true;
+                    book.MotiveID = SelItem.MotiveID;
+                    Core.Context.SaveChanges();
+                }
+                else if (user != null)
+                {
+                    user.IsFrozen = true;
+                    user.MotiveID = SelItem.MotiveID;
+                    Core.Context.SaveChanges();
+                }
+                else
+                {
+                    rev.IsFrozen = true;
+                    rev.Motive = SelItem.Motive;
+                    Core.Context.SaveChanges();
+                }
 
+                    NavigationService.Navigate(new AdministrationPage());
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                Core.Context.Complaint.Remove(SelItem);
+                Core.Context.SaveChanges();
+                NavigationService.Navigate(new AdministrationPage());
+            }
         }
     }
 }

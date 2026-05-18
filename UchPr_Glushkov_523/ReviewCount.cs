@@ -15,7 +15,7 @@ namespace UchPr_Glushkov_523
                 {
                     //if (Review.Count == 0)
                         //Review = Core.Context.Review.Where(r=>r.BookID == ID).ToList();
-                    return Review.Count();
+                    return Review.Where(c => c.IsFrozen == false).Count();
                 }
             }
         }
