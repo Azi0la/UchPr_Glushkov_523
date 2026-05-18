@@ -24,6 +24,7 @@ namespace UchPr_Glushkov_523.Pages
         public List<Book> b = Core.Context.Book.ToList();
         public List<Review> r = Core.Context.Review.ToList();
         public List<RoleApplication> ra = Core.Context.RoleApplication.ToList();
+        public List<UnfreezeRequest> ur = Core.Context.UnfreezeRequest.ToList();
 
         public List<FrozenStuff> FS = new List<FrozenStuff>();
 
@@ -45,6 +46,7 @@ namespace UchPr_Glushkov_523.Pages
             }
             FrozenList.ItemsSource = FS;
             ApplicList.ItemsSource = ra.Where(f => f.IsProcessed == false);
+            UnfrzList.ItemsSource = ur.Where(f => f.IsProcessed == false);
 
         }
 
@@ -68,6 +70,39 @@ namespace UchPr_Glushkov_523.Pages
             else if (result == MessageBoxResult.No)
             {
                 Core.Context.RoleApplication.Remove(SelItem);
+                Core.Context.SaveChanges();
+                NavigationService.Navigate(new AdministrationPage());
+            }
+        }
+
+        private void UnfrzList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var SelItem = UnfrzList.SelectedItem as UnfreezeRequest;
+            MessageBoxResult result = MessageBox.Show(SelItem.Reason + "\n Принимается ли оспаривание?",
+                "Заявка от " + SelItem.User.Name, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+            if (result == MessageBoxResult.Yes)
+            {
+                SelItem.IsProcessed = true;
+                var book = b.FirstOrDefault(x => x.ID == SelItem.BookID);
+                if (book == null)
+                {
+                    var user = u.FirstOrDefault(x=> x.ID == SelItem.UserID);
+                    user.IsFrozen = false;
+                    user.MotiveID = null;
+                    Core.Context.SaveChanges();
+                }
+                else
+                {
+                    book.IsFrozen = false;
+                    book.MotiveID = null;
+                    Core.Context.SaveChanges();
+                }
+
+                NavigationService.Navigate(new AdministrationPage());
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                Core.Context.UnfreezeRequest.Remove(SelItem);
                 Core.Context.SaveChanges();
                 NavigationService.Navigate(new AdministrationPage());
             }

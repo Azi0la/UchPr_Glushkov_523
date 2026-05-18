@@ -1,0 +1,28 @@
+﻿<Page x:Class="UchPr_Glushkov_523.Pages.UnfreezePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UchPr_Glushkov_523.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UnfreezePage"
+      Background="Salmon">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="UnfrzLB" FontSize="20" Margin="10,10,0,0"/>
+            <Label x:Name="BookLB" FontSize="20" Margin="0,10,0,0"/>
+            <Label x:Name="AuthLB" FontSize="20" Margin="-10,10,0,0"/>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Молите о пощаде." FontSize="25" HorizontalAlignment="Center"/>
+            <TextBox x:Name="UnfrzTB" Height="100" Width="350" TextChanged="UnfrzTB_TextChanged"/>
+        </StackPanel>
+
+        <Button x:Name="SendBTN" Height="50" Width="100" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15" 
+                Content="Отправить" Click="SendBTN_Click" FontSize="20" IsEnabled="False"/>
+    </Grid>
+</Page>

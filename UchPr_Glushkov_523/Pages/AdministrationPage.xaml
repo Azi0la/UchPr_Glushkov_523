@@ -79,7 +79,24 @@ MouseDoubleClick="AdmUserList_MouseDoubleClick" Grid.Row="1" Grid.Column="0" Gri
             </ListBox.ItemsPanel>
         </ListBox>
         <Label Content="Заявки на &#10;разморозку" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="3"></Label>
-
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="UnfrzList" MouseDoubleClick="UnfrzList_MouseDoubleClick"
+ Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding UnfreezeType, StringFormat=Тип: {0}}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding UnfreezeName}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Reason}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
         <Label Content="Жалобы" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="4"></Label>
 
     </Grid>

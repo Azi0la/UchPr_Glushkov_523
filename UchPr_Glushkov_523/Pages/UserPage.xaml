@@ -22,7 +22,7 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20">
             <TextBlock x:Name="WarnTB" FontSize="25"/>
-            <Button x:Name="WarnBTN" Width="150" Height="50" Content="Оспорить &#x0a;заморозку" FontSize="15" Visibility="Hidden"/>
+            <Button x:Name="WarnBTN" Width="150" Height="50" Content="Оспорить &#x0a;заморозку" FontSize="15" Visibility="Hidden" Click="WarnBTN_Click"/>
         </StackPanel>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

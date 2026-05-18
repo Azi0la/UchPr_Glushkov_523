@@ -22,6 +22,7 @@ namespace UchPr_Glushkov_523.Pages
     {
         public static List<Review> r = Core.Context.Review.ToList();
         public List<RoleApplication> ra = Core.Context.RoleApplication.ToList();
+        public List<UnfreezeRequest> ur = Core.Context.UnfreezeRequest.ToList();
 
         public UserPage()
         {
@@ -35,12 +36,18 @@ namespace UchPr_Glushkov_523.Pages
                 WarnTB.Text = ("Внимание!\nВаш аккаунт\nзаморожен");
                 WarnBTN.Visibility = Visibility.Visible;
             }
-            
+            if (ur.Find(c => c.UserID == MainWindow.user.ID) != null) WarnBTN.IsEnabled = false;
+
         }
 
         private void ApplicBTN_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RoleApplicationPage());
+        }
+
+        private void WarnBTN_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new UnfreezePage(null, MainWindow.user));
         }
     }
 }

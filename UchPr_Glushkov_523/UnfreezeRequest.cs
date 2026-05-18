@@ -15,10 +15,11 @@ namespace UchPr_Glushkov_523
     public partial class UnfreezeRequest
     {
         public int ID { get; set; }
-        public int UserId { get; set; }
-        public Nullable<int> BookId { get; set; }
+        public int AdminID { get; set; }
+        public Nullable<int> BookID { get; set; }
         public string Reason { get; set; }
         public bool IsProcessed { get; set; }
+        public Nullable<int> UserID { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

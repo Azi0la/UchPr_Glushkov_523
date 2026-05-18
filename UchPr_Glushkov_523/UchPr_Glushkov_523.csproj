@@ -99,6 +99,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UnfreezePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\UserControlPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +167,9 @@
     <Compile Include="Pages\RoleApplicationPage.xaml.cs">
       <DependentUpon>RoleApplicationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UnfreezePage.xaml.cs">
+      <DependentUpon>UnfreezePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UserControlPage.xaml.cs">
       <DependentUpon>UserControlPage.xaml</DependentUpon>
     </Compile>
@@ -209,6 +216,7 @@
     <Compile Include="UnfreezeRequest.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnfreezeType.cs" />
     <Compile Include="User.cs">
       <DependentUpon>UchPrModel.tt</DependentUpon>
     </Compile>

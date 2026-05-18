@@ -114,10 +114,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="BookId" Type="int" />
+          <Property Name="AdminID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" />
           <Property Name="Reason" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="IsProcessed" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -308,7 +309,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="BookId" />
+              <PropertyRef Name="BookID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -320,7 +321,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="AdminID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -453,12 +454,12 @@
           <Property Name="Rating" Type="Double" />
           <NavigationProperty Name="BookGenre" Relationship="Self.FK_BookGenre_Book" FromRole="Book" ToRole="BookGenre" />
           <NavigationProperty Name="Review" Relationship="Self.FK_Review_Book" FromRole="Book" ToRole="Review" />
-          <NavigationProperty Name="UnfreezeRequest" Relationship="Self.FK_UnfreezeRequest_Book" FromRole="Book" ToRole="UnfreezeRequest" />
           <NavigationProperty Name="ReadingList" Relationship="UchPr_GlushkovModel.FK_ReadingList_Book" FromRole="Book" ToRole="ReadingList" />
           <NavigationProperty Name="Complaint" Relationship="UchPr_GlushkovModel.FK_Complaint_Book" FromRole="Book" ToRole="Complaint" />
           <NavigationProperty Name="User" Relationship="UchPr_GlushkovModel.FK_Book_User" FromRole="Book" ToRole="User" />
           <Property Name="MotiveID" Type="Int32" />
           <NavigationProperty Name="Motive" Relationship="UchPr_GlushkovModel.FK_Book_Motive" FromRole="Book" ToRole="Motive" />
+          <NavigationProperty Name="UnfreezeRequest" Relationship="UchPr_GlushkovModel.FK_UnfreezeRequest_Book" FromRole="Book" ToRole="UnfreezeRequest" />
         </EntityType>
         <EntityType Name="BookGenre">
           <Key>
@@ -543,18 +544,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="UnfreezeRequest">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="BookId" Type="Int32" />
-          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsProcessed" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_UnfreezeRequest_Book" FromRole="UnfreezeRequest" ToRole="Book" />
-          <NavigationProperty Name="User" Relationship="UchPr_GlushkovModel.FK_UnfreezeRequest_User" FromRole="UnfreezeRequest" ToRole="User" />
-        </EntityType>
         <Association Name="FK_BookGenre_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="BookGenre" Type="Self.BookGenre" Multiplicity="*" />
@@ -576,18 +565,6 @@
             </Principal>
             <Dependent Role="Review">
               <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UnfreezeRequest_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
-          <End Role="UnfreezeRequest" Type="Self.UnfreezeRequest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="BookId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -613,7 +590,6 @@
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="RoleApplication" EntityType="Self.RoleApplication" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="UnfreezeRequest" EntityType="Self.UnfreezeRequest" />
           <AssociationSet Name="FK_BookGenre_Book" Association="Self.FK_BookGenre_Book">
             <End Role="Book" EntitySet="Book" />
             <End Role="BookGenre" EntitySet="BookGenre" />
@@ -621,10 +597,6 @@
           <AssociationSet Name="FK_Review_Book" Association="Self.FK_Review_Book">
             <End Role="Book" EntitySet="Book" />
             <End Role="Review" EntitySet="Review" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UnfreezeRequest_Book" Association="Self.FK_UnfreezeRequest_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="UnfreezeRequest" EntitySet="UnfreezeRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_BookGenre_Genre" Association="Self.FK_BookGenre_Genre">
             <End Role="Genre" EntitySet="Genre" />
@@ -669,10 +641,6 @@
             <End Role="User" EntitySet="User" />
             <End Role="RoleApplication" EntitySet="RoleApplication" />
           </AssociationSet>
-          <AssociationSet Name="FK_UnfreezeRequest_User" Association="UchPr_GlushkovModel.FK_UnfreezeRequest_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UnfreezeRequest" EntitySet="UnfreezeRequest" />
-          </AssociationSet>
           <AssociationSet Name="FK_Book_Motive" Association="UchPr_GlushkovModel.FK_Book_Motive">
             <End Role="Motive" EntitySet="Motive" />
             <End Role="Book" EntitySet="Book" />
@@ -688,6 +656,15 @@
           <AssociationSet Name="FK_User_Motive" Association="UchPr_GlushkovModel.FK_User_Motive">
             <End Role="Motive" EntitySet="Motive" />
             <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <EntitySet Name="UnfreezeRequest" EntityType="UchPr_GlushkovModel.UnfreezeRequest" />
+          <AssociationSet Name="FK_UnfreezeRequest_Book" Association="UchPr_GlushkovModel.FK_UnfreezeRequest_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="UnfreezeRequest" EntitySet="UnfreezeRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnfreezeRequest_User" Association="UchPr_GlushkovModel.FK_UnfreezeRequest_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UnfreezeRequest" EntitySet="UnfreezeRequest" />
           </AssociationSet>
           </EntityContainer>
         <Association Name="FK_ReadingList_Book">
@@ -769,9 +746,9 @@
           <NavigationProperty Name="Review" Relationship="UchPr_GlushkovModel.FK_Review_User" FromRole="User" ToRole="Review" />
           <NavigationProperty Name="Role" Relationship="UchPr_GlushkovModel.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="RoleApplication" Relationship="UchPr_GlushkovModel.FK_RoleApplication_User" FromRole="User" ToRole="RoleApplication" />
-          <NavigationProperty Name="UnfreezeRequest" Relationship="UchPr_GlushkovModel.FK_UnfreezeRequest_User" FromRole="User" ToRole="UnfreezeRequest" />
           <Property Name="MotiveID" Type="Int32" />
           <NavigationProperty Name="Motive" Relationship="UchPr_GlushkovModel.FK_User_Motive" FromRole="User" ToRole="Motive" />
+          <NavigationProperty Name="UnfreezeRequest" Relationship="UchPr_GlushkovModel.FK_UnfreezeRequest_User" FromRole="User" ToRole="UnfreezeRequest" />
         </EntityType>
         <Association Name="FK_Book_User">
           <End Type="UchPr_GlushkovModel.User" Role="User" Multiplicity="1" />
@@ -845,18 +822,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UnfreezeRequest_User">
-          <End Type="UchPr_GlushkovModel.User" Role="User" Multiplicity="1" />
-          <End Type="UchPr_GlushkovModel.UnfreezeRequest" Role="UnfreezeRequest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="UnfreezeRequest">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Book_Motive">
           <End Type="UchPr_GlushkovModel.Motive" Role="Motive" Multiplicity="0..1" />
           <End Type="UchPr_GlushkovModel.Book" Role="Book" Multiplicity="*" />
@@ -902,6 +867,43 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="MotiveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UnfreezeRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsProcessed" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="UchPr_GlushkovModel.FK_UnfreezeRequest_Book" FromRole="UnfreezeRequest" ToRole="Book" />
+          <NavigationProperty Name="User" Relationship="UchPr_GlushkovModel.FK_UnfreezeRequest_User" FromRole="UnfreezeRequest" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UnfreezeRequest_Book">
+          <End Type="UchPr_GlushkovModel.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="UchPr_GlushkovModel.UnfreezeRequest" Role="UnfreezeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeRequest">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnfreezeRequest_User">
+          <End Type="UchPr_GlushkovModel.User" Role="User" Multiplicity="1" />
+          <End Type="UchPr_GlushkovModel.UnfreezeRequest" Role="UnfreezeRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UnfreezeRequest">
+              <PropertyRef Name="AdminID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1005,17 +1007,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UnfreezeRequest">
-            <EntityTypeMapping TypeName="UchPr_GlushkovModel.UnfreezeRequest">
-              <MappingFragment StoreEntitySet="UnfreezeRequest">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="BookId" ColumnName="BookId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Complaint">
             <EntityTypeMapping TypeName="UchPr_GlushkovModel.Complaint">
               <MappingFragment StoreEntitySet="Complaint">
@@ -1047,6 +1038,18 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnfreezeRequest">
+            <EntityTypeMapping TypeName="UchPr_GlushkovModel.UnfreezeRequest">
+              <MappingFragment StoreEntitySet="UnfreezeRequest">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

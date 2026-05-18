@@ -45,8 +45,8 @@ namespace UchPr_Glushkov_523
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoleApplication> RoleApplication { get; set; }
+        public virtual Motive Motive { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UnfreezeRequest> UnfreezeRequest { get; set; }
-        public virtual Motive Motive { get; set; }
     }
 }

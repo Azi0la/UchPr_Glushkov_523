@@ -21,11 +21,13 @@ namespace UchPr_Glushkov_523.Pages
     public partial class AuthorPage : Page
     {
         public static List<Book> books = Core.Context.Book.ToList();
+        public List<UnfreezeRequest> ur = Core.Context.UnfreezeRequest.ToList();
         public AuthorPage()
         {
             InitializeComponent();
             BookAuthList.ItemsSource = books.Where(c => c.AuthorID == MainWindow.user.ID && c.IsFrozen == false).ToList();
-            BookFrozenList.ItemsSource = books.Where(c => c.AuthorID == MainWindow.user.ID && c.IsFrozen == true).ToList();
+            BookFrozenList.ItemsSource = books.Where(c => c.AuthorID == MainWindow.user.ID && c.IsFrozen == true 
+            && !ur.Any(u => u.BookID == c.ID && u.IsProcessed == false)).ToList();
         }
 
         private void BookAuthList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -35,7 +37,9 @@ namespace UchPr_Glushkov_523.Pages
 
         private void BookFrozenList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            //Button Btn = sender as Button;
+            //Book SelectBook = Btn.DataContext as Book;
+            NavigationService.Navigate(new UnfreezePage(BookFrozenList.SelectedItem as Book));
         }
     }
 }
