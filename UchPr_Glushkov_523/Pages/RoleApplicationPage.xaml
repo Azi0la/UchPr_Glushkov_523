@@ -1,0 +1,21 @@
+﻿<Page x:Class="UchPr_Glushkov_523.Pages.RoleApplicationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UchPr_Glushkov_523.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RoleApplicationPage"
+      Background="Salmon">
+
+    <Grid>
+        <Label Content="Заявка на автора" Margin="15" FontSize="35"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Почему мы должны одобрить заявку?" FontSize="25"/>
+            <TextBox x:Name="ReasonTB" Height="100" TextChanged="ReasonTB_TextChanged" TextWrapping="Wrap"/>
+        </StackPanel>
+        <Button x:Name="SendBTN" Height="50" Width="150" VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right" Margin="15" Content="Отправить" FontSize="25" Click="SendBTN_Click" IsEnabled="False"/>
+    </Grid>
+</Page>

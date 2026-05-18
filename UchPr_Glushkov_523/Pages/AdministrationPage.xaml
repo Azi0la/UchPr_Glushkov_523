@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="8*"/>
+                <RowDefinition Height="7.5*"/>
          </Grid.RowDefinitions>
             <Label Content="Пользователи" HorizontalAlignment="Center" FontSize="15" Grid.Row="0"></Label>
             <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="AdmUserList"
@@ -47,7 +47,9 @@ MouseDoubleClick="AdmUserList_MouseDoubleClick" Grid.Row="1" Grid.Column="0" Gri
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-
+                        <TextBlock Text="{Binding type, StringFormat=Тип: {0}}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding name}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding motive}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -59,7 +61,23 @@ MouseDoubleClick="AdmUserList_MouseDoubleClick" Grid.Row="1" Grid.Column="0" Gri
             </ListBox.ItemsPanel>
         </ListBox>
         <Label Content="Заявки на &#10;авторство" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="2"></Label>
-
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ApplicList" MouseDoubleClick="ApplicList_MouseDoubleClick"
+         Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding User.Name}"/>
+                        <TextBlock Text="{Binding Reason}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
         <Label Content="Заявки на &#10;разморозку" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="3"></Label>
 
         <Label Content="Жалобы" HorizontalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="4"></Label>

@@ -23,17 +23,54 @@ namespace UchPr_Glushkov_523.Pages
         public static List<User> u = Core.Context.User.ToList();
         public List<Book> b = Core.Context.Book.ToList();
         public List<Review> r = Core.Context.Review.ToList();
+        public List<RoleApplication> ra = Core.Context.RoleApplication.ToList();
+
+        public List<FrozenStuff> FS = new List<FrozenStuff>();
 
         public AdministrationPage()
         {
             InitializeComponent();
             AdmUserList.ItemsSource = u;
+            foreach(var item in u.Where(i=> i.IsFrozen == true)) 
+            {
+                FS.Add(new FrozenStuff(item));
+            }
+            foreach (var item in b.Where(i => i.IsFrozen == true))
+            {
+                FS.Add(new FrozenStuff(item));
+            }
+            foreach (var item in r.Where(i => i.IsFrozen == true))
+            {
+                FS.Add(new FrozenStuff(item));
+            }
+            FrozenList.ItemsSource = FS;
+            ApplicList.ItemsSource = ra.Where(f => f.IsProcessed == false);
 
         }
 
         private void AdmUserList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new UserControlPage(AdmUserList.SelectedItem as  User));
+            NavigationService.Navigate(new UserControlPage(AdmUserList.SelectedItem as User));
+        }
+
+        private void ApplicList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var SelItem = ApplicList.SelectedItem as RoleApplication;
+            MessageBoxResult result = MessageBox.Show(SelItem.Reason + "\n Принимается ли заявка?",
+                "Заявка от " + SelItem.User.Name, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+            if (result == MessageBoxResult.Yes)
+            {
+                SelItem.IsProcessed = true;
+                SelItem.User.RoleID = 2;
+                Core.Context.SaveChanges();
+                NavigationService.Navigate(new AdministrationPage());
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                Core.Context.RoleApplication.Remove(SelItem);
+                Core.Context.SaveChanges();
+                NavigationService.Navigate(new AdministrationPage());
+            }
         }
     }
 }

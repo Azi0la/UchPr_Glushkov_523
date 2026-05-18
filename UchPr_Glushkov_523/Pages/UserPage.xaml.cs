@@ -21,17 +21,21 @@ namespace UchPr_Glushkov_523.Pages
     public partial class UserPage : Page
     {
         public static List<Review> r = Core.Context.Review.ToList();
+        public List<RoleApplication> ra = Core.Context.RoleApplication.ToList();
 
         public UserPage()
         {
             InitializeComponent();
             DataContext = MainWindow.user;
             RevUsList.ItemsSource = r.Where(c => c.UserID == MainWindow.user.ID).ToList();
+            if(ra.Find(c =>  c.UserID == MainWindow.user.ID) != null ) ApplicBTN.IsEnabled = false;
+            if(MainWindow.user.RoleID == 3) ApplicBTN.IsEnabled = false;
+            
         }
 
         private void ApplicBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new RoleApplicationPage());
         }
     }
 }

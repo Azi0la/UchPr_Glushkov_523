@@ -17,6 +17,7 @@ namespace UchPr_Glushkov_523
         public int ID { get; set; }
         public int UserID { get; set; }
         public bool IsProcessed { get; set; }
+        public string Reason { get; set; }
     
         public virtual User User { get; set; }
     }
