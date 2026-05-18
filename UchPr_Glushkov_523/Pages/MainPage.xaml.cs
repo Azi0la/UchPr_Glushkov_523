@@ -70,7 +70,7 @@ namespace UchPr_Glushkov_523.Pages
 
         private void ButtWarn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Внимание, ваш аккаунт заморожен!");
+            MainePage.NavigationService.Navigate(new Pages.UserPage());
         }
     }
 }

@@ -37,7 +37,7 @@ namespace UchPr_Glushkov_523.Pages
         {
             ReviewList.ItemsSource = null;
             StatusCB.ItemsSource = null;
-            ReviewList.ItemsSource = r.Where(c => c.BookID == book.ID).ToList();
+            ReviewList.ItemsSource = r.Where(c => c.BookID == book.ID && c.IsFrozen == false).ToList();
             List<String> sorting = new List<String> { "Заброшено", "В планах", "Читаю", "Прочитано" };
             List<BookGenre> bookGenres = bg.Where(c => c.BookID == book.ID).ToList();
             StatusCB.ItemsSource = sorting;
@@ -57,6 +57,8 @@ namespace UchPr_Glushkov_523.Pages
                 GenreTB.Text += g.FirstOrDefault(c => c.ID == b.GenreID).Name.ToString();
                 GenreTB.Text += " ";
             }
+
+            if(MainWindow.user.IsFrozen == true) ReviewBTN.IsEnabled = false;
         }
 
 

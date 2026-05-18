@@ -32,7 +32,7 @@ namespace UchPr_Glushkov_523.Pages
             InitializeComponent();
             Core.Update();
             books = Core.Context.Book.ToList();
-            BookList.ItemsSource = books;
+            BookList.ItemsSource = books.Where(c => c.IsFrozen == false);
             Genres = Core.Context.Genre.ToList();
             List<String> sorting = new List<String> { "По Названию", "По Оценке" };
             FilterBox.ItemsSource = sorting;
@@ -64,6 +64,7 @@ namespace UchPr_Glushkov_523.Pages
         private void Search()
         {
             var FilterBooks = Core.Context.Book.ToList();
+            FilterBooks = FilterBooks.Where(c => c.IsFrozen == false).ToList();
             if (SearchBar == null && FilterBox == null && GenreList == null) return;
 
             if (!string.IsNullOrWhiteSpace(SearchBar.Text))

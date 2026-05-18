@@ -30,6 +30,11 @@ namespace UchPr_Glushkov_523.Pages
             RevUsList.ItemsSource = r.Where(c => c.UserID == MainWindow.user.ID).ToList();
             if(ra.Find(c =>  c.UserID == MainWindow.user.ID) != null ) ApplicBTN.IsEnabled = false;
             if(MainWindow.user.RoleID == 3) ApplicBTN.IsEnabled = false;
+            if(MainWindow.user.IsFrozen == true)
+            {
+                WarnTB.Text = ("Внимание!\nВаш аккаунт\nзаморожен");
+                WarnBTN.Visibility = Visibility.Visible;
+            }
             
         }
 
